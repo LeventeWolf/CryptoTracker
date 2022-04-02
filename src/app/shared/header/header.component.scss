@@ -1,8 +1,5 @@
-$header-bg-color: #14161A;
-$header-font-color: gold;
-
 header {
-  background-color: $header-bg-color;
+
 }
 
 
@@ -18,10 +15,10 @@ header {
 
 .header-title {
   padding: 15px 0;
-
-  color: $header-font-color;
   font-size: 1.5rem;
-  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-weight: bold;
+  color: gold;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: bolder;
   letter-spacing: 0.001px;
 }
