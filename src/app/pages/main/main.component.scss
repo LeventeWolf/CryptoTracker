@@ -1,29 +1,7 @@
 main {
-  width: 100%;
-  position: relative;
+  //border: 1px solid red;
 }
 
 .main-container {
-
-
   height: 800px;
 }
-
-.carousel {
-  //border: 1px solid blue;
-  background-image: url("../../../assets/banner.jpg");
-  height: 400px;
-
-
-  .main-title {
-    width: 100%;
-    text-align: center;
-
-    color: white;
-    font-size: 3rem;
-    font-family: Montserrat, sans-serif;
-    letter-spacing: 0.001px;
-  }
-}
-
-

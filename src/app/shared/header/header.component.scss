@@ -1,7 +1,6 @@
 header {
-
+  //border: 1px solid blue;
 }
-
 
 .header-container {
   display: flex;
@@ -10,15 +9,30 @@ header {
   height: 100%;
   width: 70%;
   margin: 0 auto;
-  //border: 2px solid blue;
+
+  font-family: Monestratt, sans-serif;
 }
 
 .header-title {
+  flex-grow: 1;
   padding: 15px 0;
-  font-size: 1.5rem;
-  color: gold;
 
-  font-family: "Roboto", sans-serif;
-  font-weight: bolder;
+  color: gold;
+  font-size: 1.5rem;
+  font-weight: 700;
   letter-spacing: 0.001px;
 }
+
+.join-container {
+  color: white;
+  font-weight: 400;
+  font-size: 1.5rem;
+
+  display: flex;
+  gap: 15px;
+
+  .login, .register {
+    cursor: pointer;
+  }
+}
+
