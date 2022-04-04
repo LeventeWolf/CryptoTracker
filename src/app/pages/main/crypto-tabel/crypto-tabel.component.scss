@@ -1,6 +1,5 @@
-.crypto-table-wrap {
+.crypto-table-container {
   width: 70%;
-  height: 400px;
   margin: 0 auto;
 
   border: 1px solid red;
@@ -16,4 +15,39 @@
   font-size: 2em;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
+}
+
+
+.table-wrap {
+  width: 100%;
+  height: 600px;
+
+  margin-top: 20px;
+
+  //border: 1px solid blue;
+}
+
+table {
+  font-family: Montserrat, sans-serif;
+  border-collapse: collapse;
+}
+
+table th {
+  width: 400px;
+  height: 40px;
+  background-color: orange;
+}
+
+table td {
+  color: white;
+  text-align: center;
+  font-weight: 400;
+}
+
+table th:first-child {
+  border-top-left-radius: 5px;
+}
+
+table th:last-child {
+  border-top-right-radius: 5px;
 }

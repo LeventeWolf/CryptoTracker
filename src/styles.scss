@@ -3,9 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&family=Raleway:wght@200&display=swap');
 $bg-color: #14161A;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: $bg-color;
   //background-color: grey;
 }
+
