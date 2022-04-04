@@ -13,7 +13,7 @@
             <tr *ngFor="let coin of coins">
                 <td>
                   <div class="coin">
-                    <img src="{{coin.image}}" alt="{{coin.id }}'-img'" />
+                    <img src="{{coin.image}}" alt="{{coin.id}}'-img'" />
                     <div class="name-container">
                       <span class="symbol">{{coin.symbol}}</span>
                       <span class="name">{{coin.name}}</span>
@@ -21,7 +21,9 @@
                   </div>
                 </td>
                 <td>{{coin.current_price}} $</td>
-                <td>{{coin.price_change_percentage_24h}}</td>
+                <td [ngStyle]="{'color': (coin.price_change_percentage_24h >= 0) ? '#0ecb81' : 'red'}">
+                  {{coin.price_change_percentage_24h}}%
+                </td>
                 <td>{{numberWithCommas(coin.market_cap).toString().slice(0, -6)}} M</td>
             </tr>
           </tbody>
