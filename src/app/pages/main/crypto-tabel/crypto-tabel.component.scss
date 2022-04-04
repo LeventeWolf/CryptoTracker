@@ -2,7 +2,7 @@
   width: 70%;
   margin: 0 auto;
 
-  border: 1px solid red;
+  //border: 1px solid red;
 }
 
 
@@ -39,9 +39,14 @@ table th {
 }
 
 table td {
+  background-color: #16171A;
   color: white;
   text-align: center;
   font-weight: 400;
+}
+
+table tr {
+  border-bottom: 1px solid #515151;
 }
 
 table th:first-child {
@@ -50,4 +55,37 @@ table th:first-child {
 
 table th:last-child {
   border-top-right-radius: 5px;
+}
+
+.coin {
+  height: 5em;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 1em;
+  gap: 1em;
+
+  img {
+    width: 3em;
+  }
+
+  .name-container {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5em;
+
+    .symbol {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .name {
+      font-weight: 200;
+    }
+  }
+
 }
