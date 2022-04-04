@@ -19,6 +19,9 @@ import {MainModule} from "./pages/main/main.module";
     MainModule
   ],
   providers: [],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
