@@ -4,5 +4,17 @@
 
   <div class="carousel-wrap">
 
+    <div class="hot-crypto-wrap appear" *ngFor="let coin of random_coins">
+      <img src="{{coin.image}}" alt="coin"/>
+      <div class="name-wrap">
+        <span class="symbol">{{coin.symbol}}</span>
+        <span class="price-change" [ngStyle]="{'color': (coin.price_change_percentage_24h >= 0) ? '#0ecb81' : 'red'}">
+          {{coin.price_change_percentage_24h | roundNumber}}%
+        </span>
+      </div>
+
+      <span class="price">$ {{coin.current_price}}</span>
+    </div>
+
   </div>
 </div>

@@ -19,7 +19,7 @@ import { RoundNumberPipe } from '../../shared/pipes/round-number.pipe';
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
   ]
 })
 

@@ -4,6 +4,8 @@
   padding-top: 40px;
 
   font-family: Montserrat, sans-serif;
+
+  color: white;
 }
 
 .main-title {
@@ -11,14 +13,12 @@
   text-align: center;
   margin: 0 0 7px 0;
 
-  color: white;
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.001px;
 }
 
 .sub-text {
-  color: white;
   width: 100%;
   text-align: center;
   font-weight: 200;
@@ -26,9 +26,59 @@
 
 .carousel-wrap {
   width: 70%;
-  height: 300px;
+  min-height: 15em;
+  margin: 1em auto;
 
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  //border: 1px solid red;
+.hot-crypto-wrap {
+  //border: 1px solid blue;
+  width: 20em;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  img {
+    max-width: 5em;
+    margin-bottom: 0.75em;
+  }
+
+  .name-wrap {
+    display: flex;
+    gap: 0.25em;
+    margin-bottom: 0.1em;
+  }
+
+  .symbol {
+    text-transform: uppercase;
+  }
+
+  .price {
+    font-size: 1.25em;
+    font-weight: 500;
+  }
+}
+
+
+.appear {
+  animation-name: appear;
+  animation-duration: .7s;
+  animation-timing-function: ease-in;
+}
+
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

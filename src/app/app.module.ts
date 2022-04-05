@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { MainComponent } from './pages/main/main.component';
 import {MainModule} from "./pages/main/main.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {MainModule} from "./pages/main/main.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MainModule
+    MainModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   exports: [
