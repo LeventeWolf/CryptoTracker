@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Coin, fetchCoins} from '../main.component';
 
 @Component({
-  selector: 'app-crypto-tabel',
-  templateUrl: './crypto-tabel.component.html',
-  styleUrls: ['./crypto-tabel.component.scss']
+  selector: 'app-crypto-table',
+  templateUrl: './crypto-table.component.html',
+  styleUrls: ['./crypto-table.component.scss']
 })
-export class CryptoTabelComponent implements OnInit {
+export class CryptoTableComponent implements OnInit {
   public coins: Coin[] = [];
 
   constructor() {}
