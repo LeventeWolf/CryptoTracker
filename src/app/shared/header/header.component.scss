@@ -9,10 +9,20 @@ header {
   align-items: center;
 
   height: 100%;
-  width: 70%;
+  margin-inside: auto;
+  width: min(100% - 2rem, 100%);
+
   margin: 0 auto;
 
   font-family: Monestratt, sans-serif;
+}
+
+
+// Desktop
+@media screen and (min-width: 600px){
+  .header-container {
+    width: 70%
+  }
 }
 
 .header-title {
