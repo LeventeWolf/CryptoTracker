@@ -1,64 +1,47 @@
+// Mobile
 .crypto-table-container {
-  width: 70%;
-  margin: 0 auto;
-
-  //border: 1px solid red;
+  margin-inline: 0.5em;
 }
-
 
 .title {
-  width: 100%;
   text-align: center;
-  margin: 0.5em 0;
+  margin: 0.5em;
 
   color: white;
-  font-size: 2em;
-  font-family: Montserrat, sans-serif;
+  font-size: 1.5em;
   font-weight: 400;
-}
-
-
-.table-wrap {
-  width: 100%;
-  height: 600px;
-
-  margin-top: 20px;
-
-  //border: 1px solid blue;
 }
 
 table {
-  font-family: Montserrat, sans-serif;
   border-collapse: collapse;
-}
+  width: 100%;
 
-table th {
-  width: 400px;
-  height: 40px;
-  background-color: orange;
-}
+  tr {
+    border-bottom: 1px solid #515151;
+  }
 
-table td {
-  background-color: #16171A;
-  color: white;
-  text-align: center;
-  font-weight: 400;
-}
+  th {
+    background-color: orange;
 
-table tr {
-  border-bottom: 1px solid #515151;
-}
+    &:first-child {
+      border-top-left-radius: 5px;
+    }
 
-table th:first-child {
-  border-top-left-radius: 5px;
-}
+    &:last-child {
+      border-top-right-radius: 5px;
+    }
+  }
 
-table th:last-child {
-  border-top-right-radius: 5px;
+  td {
+    background-color: #16171A;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+  }
 }
 
 .coin {
-  height: 5em;
+  height: 4em;
 
   display: flex;
   align-items: center;
@@ -67,16 +50,13 @@ table th:last-child {
   gap: 1em;
 
   img {
-    width: 3em;
+    width: 2em;
   }
 
   .name-container {
-    flex-grow: 1;
-
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 0.5em;
 
     .symbol {
       text-transform: uppercase;
@@ -87,5 +67,39 @@ table th:last-child {
       font-weight: 200;
     }
   }
+}
 
+.market-cap {
+  width: 50%;
+  overflow: hidden;
+}
+
+
+// Desktop
+@media screen and (min-width: 600px) {
+  .crypto-table-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+
+  table th {
+    width: 400px;
+    height: 40px;
+  }
+
+  .coin {
+    height: 5em;
+
+    img {
+      width: 3em;
+    }
+
+    .name-container {
+      gap: 0.5em;
+    }
+  }
 }
