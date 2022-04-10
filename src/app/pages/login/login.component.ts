@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  email: any;
+  password: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  login() {
+
+  }
 }
