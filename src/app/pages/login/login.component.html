@@ -1,13 +1,20 @@
 <div id="main-wrap">
-    <form class="appear">
-        <h3>Login Here</h3>
+  <form class="appear" [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <h3>Login Here</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Enter your username" id="username">
+    <label for="username">Username</label>
+    <input type="text" placeholder="Enter your username" id="username" formControlName="username">
+    <small class="invalid-field" *ngIf="submitted && loginForm.controls['username'].hasError('required')">
+      The username field is required!
+    </small>
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Enter your password" id="password">
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter your password" id="password" formControlName="password">
 
-        <button>Login</button>
-    </form>
+    <small class="invalid-field" *ngIf="submitted && loginForm.controls['password'].hasError('required')">
+      The password field is required!
+    </small>
+
+    <button>Login</button>
+  </form>
 </div>

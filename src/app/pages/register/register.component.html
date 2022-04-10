@@ -1,15 +1,24 @@
 <div id="main-wrap">
-  <form class="appear">
+  <form class="appear" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <h3>Register</h3>
 
     <label for="username">Username</label>
-    <input type="text" placeholder="Enter your username" id="username">
+    <input type="text" placeholder="Enter your username" id="username" formControlName="username">
+    <small class="invalid-field" *ngIf="submitted && registerForm.controls['username'].hasError('required')">
+      The username field is required!
+    </small>
 
     <label for="password">Password</label>
-    <input type="password" placeholder="Enter your password" id="password">
+    <input type="password" placeholder="Enter your password" id="password" formControlName="password">
+    <small class="invalid-field" *ngIf="submitted && registerForm.controls['password'].hasError('required')">
+      The password field is required!
+    </small>
 
-    <label for="re-password">Re-Password</label>
-    <input type="password" placeholder="Enter your password" id="re-password">
+    <label for="re_password">Re-Password</label>
+    <input type="password" placeholder="Enter your password" id="re_password" formControlName="re_password">
+    <small class="invalid-field" *ngIf="submitted && registerForm.controls['re_password'].hasError('required')">
+      The re-password field is required!
+    </small>
 
     <button>Create account</button>
   </form>
