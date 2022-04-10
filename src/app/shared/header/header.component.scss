@@ -1,5 +1,7 @@
 header {
   //border: 1px solid blue;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .header-container {

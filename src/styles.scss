@@ -16,3 +16,22 @@ body {
 
 
 html, body { height: 100%; }
+
+
+// Animations
+.appear {
+  animation-name: appear;
+  animation-duration: .7s;
+  animation-timing-function: ease-in;
+}
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
