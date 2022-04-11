@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "CryptoTracker:build:production",
+            "firebaseProject": "cryptotracker-3000",
+            "firebaseHostingSite": "cryptotracker-3000"
+          }
         }
       }
     }

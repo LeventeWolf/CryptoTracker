@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 import {Router} from "@angular/router";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted: boolean;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService ) {
     // TODO redirect to home if already logged in
     this.submitted = false;
   }
@@ -36,14 +37,23 @@ export class LoginComponent implements OnInit {
     }
 
     // If wrong username or password show error
-    if (!(this.form['username'].value === 'asd' && this.form['password'].value === 'asd')) {
-      console.error('Invalid username or password!');
-      return;
-    }
+    // if (!(this.form['username'].value === 'asd' && this.form['password'].value === 'asd')) {
+    //   console.error('Invalid username or password!');
+    //   return;
+    // }
 
 
     // If everything fine, login and redirect
-    console.log('login ok!');
-    this.router.navigateByUrl('/');
+    this.authService.login(this.form['username'].value, this.form['password'].value)
+      .then(cred => {
+        console.log('login ok!');
+        console.log(cred);
+        this.router.navigateByUrl('/');
+      })
+      .catch(error => {
+        this.submitted = false;
+        console.log(error);
+      })
+
   }
 }

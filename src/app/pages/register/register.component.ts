@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted: boolean;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
     // TODO redirect to home if already logged in
     this.submitted = false;
   }
@@ -45,8 +46,15 @@ export class RegisterComponent implements OnInit {
     }
 
     // If everything fine, login and redirect
-    console.log('register ok!');
-    this.router.navigateByUrl('/login');
+    this.authService.register(this.form['username'].value, this.form['password'].value)
+      .then(creds => {
+        console.log('register ok!');
+        console.log(creds)
+        this.router.navigateByUrl('/login');
+    }).catch(error => {
+      console.log(error)
+    });
+
   }
 
 }

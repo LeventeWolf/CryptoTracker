@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
+import firebase from 'firebase/compat';
 import {filter} from "rxjs";
+// @ts-ignore
+import {AuthService} from "./shared/services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -11,8 +14,11 @@ export class AppComponent {
   title = 'CryptoTracker';
   page = '';
   routes: Array<string> = [];
+  // @ts-ignore
+  loggedInUser?: firebase.default.User | null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.routes = this.router.config.map(conf => conf.path) as string[];
@@ -22,6 +28,15 @@ export class AppComponent {
       if (this.routes.includes(currentPage)) {
         this.page = currentPage;
       }
+    });
+
+    this.authService.isUserLoggedIn().subscribe((user: firebase.User | null | undefined) => {
+      console.log(user)
+      this.loggedInUser = user;
+      localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+    }, (error: any) => {
+      console.log(error);
+      localStorage.setItem('user', JSON.stringify('null'))
     });
   }
 
