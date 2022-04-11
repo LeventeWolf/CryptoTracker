@@ -1,23 +1,23 @@
 // Mobile
 .carousel-container {
   background-image: url("../../../../assets/banner.jpg");
-  padding-top: 40px;
+  padding-top: 1.25em;
 }
 
 .main-title {
   width: 100%;
   text-align: center;
-  margin: 0 0 7px 0;
 
-  font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.001px;
+  margin-top: 0;
 }
 
 .sub-text {
   width: 100%;
   text-align: center;
   font-weight: 200;
+  font-size: 2vw;
 }
 
 .carousel-wrap {
@@ -68,11 +68,24 @@
     height: 15em;
   }
 
+  .carousel-container {
+    padding-top: 2em;
+  }
+
   .hot-crypto-wrap {
     width: 20em;
 
     .img {
       max-width: 5em;
     }
+  }
+
+  .main-title {
+    font-size: 3em;
+    margin: 0 0 7px 0;
+  }
+
+  .sub-text {
+    font-size: 1em;
   }
 }
