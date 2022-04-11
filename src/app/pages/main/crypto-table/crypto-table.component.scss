@@ -21,6 +21,7 @@ table {
   }
 
   th {
+    height: 40px;
     background-color: orange;
 
     &:first-child {
@@ -88,7 +89,6 @@ table {
 
   table th {
     width: 400px;
-    height: 40px;
   }
 
   .coin {
