@@ -9,7 +9,7 @@ import {Coin, fetchCoins} from "../main.component";
 export class CarouselComponent implements OnInit {
   random_coins: Coin[] = [];
   innerWidth = window.innerWidth;
-  private readonly _number_of_coins: number = 4;
+  private readonly _number_of_coins: number;
 
   constructor() {
     if (innerWidth < 600) {

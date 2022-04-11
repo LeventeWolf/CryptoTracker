@@ -1,6 +1,8 @@
 <header>
   <div class="header-container">
-    <span class="header-title" (click)="menuSwitch('/')">Crypto Tracker</span>
+    <div class="title-wrap" >
+      <span (click)="menuSwitch('/')">Crypto Tracker</span>
+    </div>
 
     <div class="join-container">
       <span *ngIf="!(loggedInUser)" class="login" (click)="menuSwitch('login')">Login</span>

@@ -9,44 +9,52 @@ header {
   align-items: center;
 
   height: 100%;
+  margin: 0 auto;
   margin-inside: auto;
   width: min(100% - 2rem, 100%);
 
-  margin: 0 auto;
+  .title-wrap {
+    flex-grow: 1;
+    padding: 15px 0;
 
-  font-family: Monestratt, sans-serif;
+    span {
+      color: gold;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.001px;
+
+      cursor: pointer;
+    }
+  }
+
+  .join-container {
+    font-weight: 400;
+    font-size: 1.5rem;
+
+    display: flex;
+    gap: 15px;
+
+    .login, .register {
+      cursor: pointer;
+    }
+
+
+    span {
+      transition: .3s color;
+
+      &:hover, &:active {
+        color: scale-color(white, $lightness: -30%);
+      }
+    }
+  }
 }
 
 
 // Desktop
-@media screen and (min-width: 600px){
+@media screen and (min-width: 900px){
   .header-container {
     width: 70%
   }
 }
 
-.header-title {
-  flex-grow: 1;
-  padding: 15px 0;
-
-  cursor: pointer;
-
-  color: gold;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.001px;
-}
-
-.join-container {
-  color: white;
-  font-weight: 400;
-  font-size: 1.5rem;
-
-  display: flex;
-  gap: 15px;
-
-  .login, .register {
-    cursor: pointer;
-  }
-}
 

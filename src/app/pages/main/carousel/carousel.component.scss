@@ -17,7 +17,7 @@
   width: 100%;
   text-align: center;
   font-weight: 200;
-  font-size: 2vw;
+  font-size: 0.8em;
 }
 
 .carousel-wrap {
@@ -62,7 +62,7 @@
 
 // Desktop
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   .carousel-wrap {
     width: 70%;
     height: 15em;
