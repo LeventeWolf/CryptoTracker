@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/services/auth.service";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {delay} from "../../app.component";
+
 
 @Component({
   selector: 'app-login',
@@ -12,48 +15,53 @@ import {AuthService} from "../../shared/services/auth.service";
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted: boolean;
+  error: string | null;
+  loading: boolean;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService ) {
-    // TODO redirect to home if already logged in
     this.submitted = false;
+    this.error = null;
+    this.loading = false;
   }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   get form() {return this.loginForm.controls;}
 
-  onSubmit() {
+  async onSubmit() {
     this.submitted = true;
+    this.loading = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       console.error('Invalid form!');
+      await delay(1000);
+      this.loading = false;
       return;
     }
 
-    // If wrong username or password show error
-    // if (!(this.form['username'].value === 'asd' && this.form['password'].value === 'asd')) {
-    //   console.error('Invalid username or password!');
-    //   return;
-    // }
-
-
     // If everything fine, login and redirect
-    this.authService.login(this.form['username'].value, this.form['password'].value)
-      .then(cred => {
-        console.log('login ok!');
-        console.log(cred);
+    this.authService.login(this.form['email'].value, this.form['password'].value)
+      .then(_ => {
         this.router.navigateByUrl('/');
       })
-      .catch(error => {
+      .catch(async error => {
+        await delay(1000);
         this.submitted = false;
-        console.log(error);
+        this.loading = false;
+        this.error = errors[error.code];
+        console.log(error.code)
       })
 
   }
+}
+
+const errors: any = {
+  'auth/wrong-password': 'Invalid username or password',
+  'auth/invalid-email': 'Invalid username or password',
 }

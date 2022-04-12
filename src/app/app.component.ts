@@ -31,7 +31,6 @@ export class AppComponent {
     });
 
     this.authService.isUserLoggedIn().subscribe((user: firebase.User | null | undefined) => {
-      console.log(user)
       this.loggedInUser = user;
       localStorage.setItem('user', JSON.stringify(this.loggedInUser));
     }, (error: any) => {
@@ -43,4 +42,12 @@ export class AppComponent {
   changePage(selectedPage: string) {
     this.router.navigateByUrl(selectedPage);
   }
+}
+
+export function delay(delayInms: number) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(2);
+    }, delayInms);
+  });
 }

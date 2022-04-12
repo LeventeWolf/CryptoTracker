@@ -2,10 +2,13 @@
   <form class="appear" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <h3>Register</h3>
 
-    <label for="username">Username</label>
-    <input type="text" placeholder="Enter your username" id="username" formControlName="username">
-    <small class="invalid-field" *ngIf="submitted && registerForm.controls['username'].hasError('required')">
-      The username field is required!
+    <label for="email">Email</label>
+    <input type="text" placeholder="Enter your email" id="email" formControlName="email">
+    <small class="invalid-field" *ngIf="submitted && registerForm.controls['email'].hasError('required')">
+      The email field is required!
+    </small>
+    <small class="invalid-field" *ngIf="submitted && registerForm.controls['email'].hasError('email')">
+      The email is not valid!
     </small>
 
     <label for="password">Password</label>
@@ -20,6 +23,14 @@
       The re-password field is required!
     </small>
 
-    <button>Create account</button>
+    <div class="join-container">
+      <div class="invalid-field">
+        {{error}}
+      </div>
+
+      <button *ngIf="!loading">Create account</button>
+
+      <mat-spinner *ngIf="loading" [diameter]="35"></mat-spinner>
+    </div>
   </form>
 </div>

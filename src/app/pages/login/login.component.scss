@@ -76,20 +76,50 @@ input[type='password'] {
   font-family: 'Montserrat', serif !important;
 }
 
-button{
-  width: 100%;
-  margin-top: 50px;
-  padding: 15px 0;
+.join-container {
+  margin-top: 20px;
 
-  color: #FFD700 !important;
-  background-color: $bg-color;
-  font-size: 18px;
-  font-weight: 800;
+  div {
+    font-size: 0.9em;
+  }
 
-  box-shadow: 0 0 5px rgba(157, 156, 160, 0.14);
+  button {
+    width: 100%;
+    margin-top: 1em;
+    padding: 15px 0;
 
-  border-radius: 5px;
-  cursor: pointer;
+    color: #FFD700 !important;
+    background-color: $bg-color;
+    font-size: 18px;
+    font-weight: 800;
+
+    box-shadow: 0 0 5px rgba(157, 156, 160, 0.14);
+
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(110%);
+    }
+
+    &:active {
+
+    }
+
+    &:disabled {
+      filter: brightness(80%);
+    }
+  }
+
+  ::ng-deep .mat-spinner {
+    margin: 20px auto 10px auto;
+
+    circle {
+      stroke: orange !important;
+    }
+  }
+
+
 }
 
 .appear {

@@ -2,10 +2,10 @@
   <form class="appear" [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <h3>Login Here</h3>
 
-    <label for="username">Username</label>
-    <input type="text" placeholder="Enter your username" id="username" formControlName="username">
-    <small class="invalid-field" *ngIf="submitted && loginForm.controls['username'].hasError('required')">
-      The username field is required!
+    <label for="email">Email</label>
+    <input type="text" placeholder="Enter your email" id="email" formControlName="email">
+    <small class="invalid-field" *ngIf="submitted && loginForm.controls['email'].hasError('required')">
+      The email field is required!
     </small>
 
     <label for="password">Password</label>
@@ -15,6 +15,17 @@
       The password field is required!
     </small>
 
-    <button>Login</button>
+
+    <div class="join-container">
+      <div class="invalid-field">
+        {{error}}
+      </div>
+
+      <button *ngIf="!loading">
+        Login
+      </button>
+
+      <mat-spinner *ngIf="loading"  [diameter]="35"></mat-spinner>
+    </div>
   </form>
 </div>

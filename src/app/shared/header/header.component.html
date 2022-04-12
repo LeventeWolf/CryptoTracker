@@ -5,9 +5,9 @@
     </div>
 
     <div class="join-container">
-      <span *ngIf="!(loggedInUser)" class="login" (click)="menuSwitch('login')">Login</span>
+      <span *ngIf="!loggedInUser" class="login" (click)="menuSwitch('login')">Login</span>
+      <span *ngIf="!loggedInUser" class="register" (click)="menuSwitch('register')">Register</span>
       <span *ngIf="loggedInUser" class="login" (click)="logout()">Logout</span>
-      <span class="register" (click)="menuSwitch('register')">Register</span>
     </div>
   </div>
 </header>
