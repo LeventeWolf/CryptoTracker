@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-// @ts-ignore
 import {AuthService} from "../services/auth.service";
 
 @Component({

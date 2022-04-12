@@ -7,7 +7,25 @@
     <div class="join-container">
       <span *ngIf="!loggedInUser" class="login" (click)="menuSwitch('login')">Login</span>
       <span *ngIf="!loggedInUser" class="register" (click)="menuSwitch('register')">Register</span>
-      <span *ngIf="loggedInUser" class="login" (click)="logout()">Logout</span>
+
+
+      <div *ngIf="loggedInUser" class="material-icons-outlined icon-wrap">
+        <div>Markets</div>
+        <mat-icon [inline]="true">equalizer</mat-icon>
+      </div>
+
+      <div *ngIf="loggedInUser" class="material-icons-outlined icon-wrap">
+        <div>Trades</div>
+        <mat-icon [inline]="true">swap_vertical_circle</mat-icon>
+      </div>
+
+      <div *ngIf="loggedInUser" class="material-icons-outlined icon-wrap">
+        <div>Profile</div>
+        <mat-icon [inline]="true">person</mat-icon>
+      </div>
+
+
+<!--      <span *ngIf="loggedInUser" class="login" (click)="logout()">Logout</span>-->
     </div>
   </div>
 </header>

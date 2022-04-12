@@ -1,5 +1,4 @@
 header {
-  //border: 1px solid blue;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -28,26 +27,47 @@ header {
   }
 
   .join-container {
+    //border: 1px solid blue;
     font-weight: 400;
     font-size: 1.5rem;
 
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
+
+
 
     .login, .register {
       cursor: pointer;
-    }
-
-
-    span {
       transition: .3s color;
 
       &:hover, &:active {
         color: scale-color(white, $lightness: -30%);
       }
     }
+
+    .icon-wrap {
+      transition: .3s color;
+
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 0.25em;
+
+      .mat-icon {
+        font-size: 1.5em;
+
+        color: #FFA500;
+      }
+
+      &:hover, &:active {
+        color: scale-color(white, $lightness: -30%) !important;
+      }
+    }
   }
 }
+
 
 
 // Desktop
