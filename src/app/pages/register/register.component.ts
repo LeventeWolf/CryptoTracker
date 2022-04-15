@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     // If everything fine, login and redirect
     this.authService.register(this.form['email'].value, this.form['password'].value)
       .then(_ => {
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/');
       }).catch(error => {
           this.error = errors[error.code];
           this.loading = false;

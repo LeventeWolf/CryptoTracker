@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AuthService} from "../services/auth.service";
+import {MatDrawer} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,11 @@ import {AuthService} from "../services/auth.service";
 })
 export class HeaderComponent {
   @Output() selectedPage: EventEmitter<string> = new EventEmitter();
-  @Output()
   @Input() loggedInUser?: firebase.default.User | null;
+  @Input() drawer?: MatDrawer;
 
-  constructor(private authService: AuthService) {}
-
+  constructor(private authService: AuthService) {
+  }
 
   menuSwitch(page: string) {
     this.selectedPage.emit(page);
@@ -25,4 +26,14 @@ export class HeaderComponent {
       console.log(error)
     });
   }
+
+  toggleSidenav() {
+    if (!this.drawer) {
+      console.error(`[DRAWER] Error drawer is undefined!`);
+      return;
+    }
+
+    this.drawer.open();
+  }
+
 }

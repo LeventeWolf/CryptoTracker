@@ -64,4 +64,5 @@ export class LoginComponent implements OnInit {
 const errors: any = {
   'auth/wrong-password': 'Invalid username or password',
   'auth/invalid-email': 'Invalid username or password',
+  'auth/user-not-found': 'Invalid username or password',
 }

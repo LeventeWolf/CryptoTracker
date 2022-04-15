@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import firebase from 'firebase/compat';
 import {filter} from "rxjs";
 // @ts-ignore
 import {AuthService} from "./shared/services/auth.service";
+import {MatDrawer, MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   loggedInUser?: firebase.default.User | null;
 
   constructor(private router: Router, private authService: AuthService) {
+
   }
 
   ngOnInit() {
@@ -39,9 +41,25 @@ export class AppComponent {
     });
   }
 
-  changePage(selectedPage: string) {
+  changePage(selectedPage: string, drawer: MatDrawer) {
     this.router.navigateByUrl(selectedPage);
+    drawer.close();
   }
+
+  handleLogout(drawer: MatDrawer) {
+    this.logout();
+    drawer.close();
+  }
+
+  logout() {
+    this.authService.logout().then(() => {
+      console.log('Logged out successfully!')
+    }).catch((error: any) => {
+      console.log(error)
+    });
+  }
+
+
 }
 
 export function delay(delayInms: number) {

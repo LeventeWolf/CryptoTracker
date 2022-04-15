@@ -17,6 +17,9 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import { DrawerComponent } from './shared/drawer/drawer.component';
 
 @NgModule({
   declarations: [
@@ -25,21 +28,24 @@ import {MatIconModule} from "@angular/material/icon";
     MainComponent,
     LoginComponent,
     RegisterComponent,
+    DrawerComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MainModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        // provideFirebaseApp(() => initializeApp(environment.firebase)) | deprecated
-        provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
-        provideStorage(() => getStorage()),
-        MatProgressSpinnerModule,
-        MatIconModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MainModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    // provideFirebaseApp(() => initializeApp(environment.firebase)) | deprecated
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule
+  ],
   providers: [],
   exports: [
 

@@ -15,6 +15,19 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule),
   },
+  {
+    path: 'markets',
+    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule),
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule),
+  },
+  {
+    path: 'trades',
+    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule),
+  },
+
   // {path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule),
   //   canActivate: [AuthGuard] },
   // {path: '**', redirectTo: '/not-found'}

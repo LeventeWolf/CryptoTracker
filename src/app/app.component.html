@@ -1,3 +1,34 @@
-<app-header (selectedPage)="changePage($event)" [loggedInUser]="loggedInUser"></app-header>
+<mat-drawer-container id="sidenav-container" autosize>
+  <app-header (selectedPage)="changePage($event, drawer)" [loggedInUser]="loggedInUser" [drawer]="drawer"></app-header>
 
-<router-outlet></router-outlet>
+  <!-- TODO: Extract drawer to component -->
+  <mat-drawer #drawer id="sidenav" mode="over" position="end">
+    <div class="header-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/800px-Bitcoin.svg.png" alt="logo" />
+    </div>
+
+    <div class="sidenav-inner-wrap" (click)="changePage('markets', drawer)">
+      <div class="item">
+        <mat-icon [inline]="true">equalizer</mat-icon>
+        <div>Markets</div>
+      </div>
+
+      <div class="item" (click)="changePage('trades', drawer)">
+        <mat-icon [inline]="true">swap_vertical_circle</mat-icon>
+        <div>Trades</div>
+      </div>
+
+      <div class="item" (click)="changePage('profile', drawer)">
+        <mat-icon [inline]="true">person</mat-icon>
+        <div>Profile</div>
+      </div>
+
+      <div class="item last-item" (click)="handleLogout(drawer)">
+        <mat-icon [inline]="true">logout</mat-icon>
+        <div>Logout</div>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>

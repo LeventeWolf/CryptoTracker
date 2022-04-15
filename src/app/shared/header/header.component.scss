@@ -1,3 +1,5 @@
+$icon-color: #ffd000;
+
 header {
   user-select: none;
   -webkit-user-select: none;
@@ -11,70 +13,89 @@ header {
   margin: 0 auto;
   margin-inside: auto;
   width: min(100% - 2rem, 100%);
+}
 
-  .title-wrap {
-    flex-grow: 1;
-    padding: 15px 0;
+.title-wrap {
+  flex-grow: 1;
+  padding: 15px 0;
 
-    span {
-      color: gold;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.001px;
-
-      cursor: pointer;
-    }
-  }
-
-  .join-container {
-    //border: 1px solid blue;
-    font-weight: 400;
+  span {
+    color: gold;
     font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.001px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+    cursor: pointer;
+  }
+}
 
+.join-container, .logged-in-container {
+  font-weight: 400;
+  font-size: 1.3rem;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
 
-    .login, .register {
-      cursor: pointer;
-      transition: .3s color;
+.join-container {
+  .login, .register {
+    cursor: pointer;
+    transition: .3s color;
 
-      &:hover, &:active {
-        color: scale-color(white, $lightness: -30%);
-      }
-    }
-
-    .icon-wrap {
-      transition: .3s color;
-
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      gap: 0.25em;
-
-      .mat-icon {
-        font-size: 1.5em;
-
-        color: #FFA500;
-      }
-
-      &:hover, &:active {
-        color: scale-color(white, $lightness: -30%) !important;
-      }
+    &:hover, &:active {
+      color: scale-color(white, $lightness: -30%);
     }
   }
 }
 
+.logged-in-container {
+  display: none;
+}
 
+.mobile-menu {
+  display: inline-block;
+}
+
+.header-item-wrap {
+  transition: .3s color;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.25em;
+
+  .mat-icon {
+    font-size: 2.25em;
+    color: gold;
+  }
+
+  &:hover, &:active {
+    color: scale-color(white, $lightness: -30%) !important;
+  }
+}
 
 // Desktop
-@media screen and (min-width: 900px){
+@media screen and (min-width: 900px) {
+  .mobile-menu {
+    display: none;
+  }
+
   .header-container {
     width: 70%
   }
+
+  .logged-in-container {
+    display: flex;
+
+    .mat-icon {
+      font-size: 1.3em;
+      color: $icon-color;
+    }
+  }
+
+
 }
 
 

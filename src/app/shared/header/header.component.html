@@ -4,28 +4,39 @@
       <span (click)="menuSwitch('/')">Crypto Tracker</span>
     </div>
 
-    <div class="join-container">
-      <span *ngIf="!loggedInUser" class="login" (click)="menuSwitch('login')">Login</span>
-      <span *ngIf="!loggedInUser" class="register" (click)="menuSwitch('register')">Register</span>
+    <div *ngIf="!loggedInUser" class="join-container">
+      <span class="login" (click)="menuSwitch('login')">Login</span>
+      <span class="register" (click)="menuSwitch('register')">Register</span>
+    </div>
 
-
-      <div *ngIf="loggedInUser" class="material-icons-outlined icon-wrap">
+    <!-- Desktop header -->
+    <div *ngIf="loggedInUser" class="logged-in-container">
+      <div class="material-icons-outlined header-item-wrap" (click)="menuSwitch('markets')">
         <div>Markets</div>
         <mat-icon [inline]="true">equalizer</mat-icon>
       </div>
 
-      <div *ngIf="loggedInUser" class="material-icons-outlined icon-wrap">
+      <div class="material-icons-outlined header-item-wrap" (click)="menuSwitch('trades')">
         <div>Trades</div>
         <mat-icon [inline]="true">swap_vertical_circle</mat-icon>
       </div>
 
-      <div *ngIf="loggedInUser" class="material-icons-outlined icon-wrap">
+      <div class="material-icons-outlined header-item-wrap" (click)="menuSwitch('profile')">
         <div>Profile</div>
         <mat-icon [inline]="true">person</mat-icon>
       </div>
 
+      <div class="header-item-wrap" (click)="logout()">
+        <div>Logout</div>
+        <mat-icon [inline]="true">logout</mat-icon>
+      </div>
+    </div>
 
-<!--      <span *ngIf="loggedInUser" class="login" (click)="logout()">Logout</span>-->
+    <!-- Mobile header -->
+    <div *ngIf="loggedInUser" class="mobile-menu">
+      <div class="material-icons-outlined header-item-wrap" (click)="toggleSidenav()">
+        <mat-icon [inline]="true">menu</mat-icon>
+      </div>
     </div>
   </div>
 </header>
