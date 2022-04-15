@@ -1,6 +1,5 @@
 <mat-drawer-container id="sidenav-container" autosize>
   <app-header (selectedPage)="changePage($event, drawer)" [loggedInUser]="loggedInUser" [drawer]="drawer"></app-header>
-
   <!-- TODO: Extract drawer to component -->
   <mat-drawer #drawer id="sidenav" mode="over" position="end">
     <div class="header-wrap">
@@ -12,17 +11,14 @@
         <mat-icon [inline]="true">equalizer</mat-icon>
         <div>Markets</div>
       </div>
-
       <div class="item" (click)="changePage('trades', drawer)">
         <mat-icon [inline]="true">swap_vertical_circle</mat-icon>
         <div>Trades</div>
       </div>
-
       <div class="item" (click)="changePage('profile', drawer)">
         <mat-icon [inline]="true">person</mat-icon>
         <div>Profile</div>
       </div>
-
       <div class="item last-item" (click)="handleLogout(drawer)">
         <mat-icon [inline]="true">logout</mat-icon>
         <div>Logout</div>

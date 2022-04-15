@@ -28,12 +28,7 @@ export class HeaderComponent {
   }
 
   toggleSidenav() {
-    if (!this.drawer) {
-      console.error(`[DRAWER] Error drawer is undefined!`);
-      return;
-    }
-
-    this.drawer.open();
+    this.drawer?.open();
   }
 
 }

@@ -17,6 +17,7 @@ export class AppComponent {
   routes: Array<string> = [];
   // @ts-ignore
   loggedInUser?: firebase.default.User | null;
+  @Input() drawer?: MatDrawer;
 
   constructor(private router: Router, private authService: AuthService) {
 
@@ -43,6 +44,7 @@ export class AppComponent {
 
   changePage(selectedPage: string, drawer: MatDrawer) {
     this.router.navigateByUrl(selectedPage);
+    // this.drawer?.close();
     drawer.close();
   }
 
