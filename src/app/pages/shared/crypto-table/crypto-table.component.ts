@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Coin, fetchCoins} from '../main.component';
+import {Coin, fetchCoins} from '../../main/main.component';
 
 @Component({
   selector: 'app-crypto-table',

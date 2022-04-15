@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
-import { CryptoTableComponent } from './crypto-table/crypto-table.component';
+import { CryptoTableComponent } from '../shared/crypto-table/crypto-table.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { RoundNumberPipe } from '../../shared/pipes/round-number.pipe';
 
 
 @NgModule({
   declarations: [
-    CryptoTableComponent,
     CarouselComponent,
-    RoundNumberPipe
+    RoundNumberPipe,
+    CryptoTableComponent
   ],
   exports: [
     CarouselComponent,
-    CryptoTableComponent
+    CryptoTableComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +23,4 @@ import { RoundNumberPipe } from '../../shared/pipes/round-number.pipe';
   ]
 })
 
-// @ts-ignore
 export class MainModule {}
-// @ts-ignore

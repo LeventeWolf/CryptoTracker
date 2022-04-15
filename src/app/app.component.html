@@ -2,7 +2,7 @@
   <app-header (selectedPage)="changePage($event, drawer)" [loggedInUser]="loggedInUser" [drawer]="drawer"></app-header>
   <!-- TODO: Extract drawer to component -->
   <mat-drawer #drawer id="sidenav" mode="over" position="end">
-    <div class="header-wrap">
+    <div class="header-wrap" (click)="changePage('', drawer)">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/800px-Bitcoin.svg.png" alt="logo" />
     </div>
 

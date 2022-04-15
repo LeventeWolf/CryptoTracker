@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'markets',
-    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule),
+    loadChildren: () => import('./pages/markets/markets.module').then(m => m.MarketsModule),
   },
   {
     path: 'profile',
