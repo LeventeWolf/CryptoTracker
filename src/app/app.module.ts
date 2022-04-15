@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './shared/header/header.component';
+import {HeaderComponent} from './pages/shared/header/header.component';
 import {MainComponent} from './pages/main/main.component';
 import {MainModule} from "./pages/main/main.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -20,6 +20,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MarketsComponent} from './pages/markets/markets.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MarketsComponent} from './pages/markets/markets.component';
     LoginComponent,
     RegisterComponent,
     MarketsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

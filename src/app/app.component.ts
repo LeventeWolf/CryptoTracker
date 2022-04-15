@@ -43,8 +43,8 @@ export class AppComponent {
   }
 
   changePage(selectedPage: string, drawer: MatDrawer) {
+    this.page = selectedPage;
     this.router.navigateByUrl(selectedPage);
-    // this.drawer?.close();
     drawer.close();
   }
 

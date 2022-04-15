@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../../../shared/services/auth.service";
 import {MatDrawer} from "@angular/material/sidenav";
 
 @Component({
