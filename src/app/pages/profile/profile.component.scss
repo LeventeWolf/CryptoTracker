@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+#main {
+  background-image: url("../../../assets/banner.jpg");
+  height: 90%;
+  padding-top: 1em;
+}
+
+#wrap {
+  width: min(100% - 2rem, 100%);
+  margin-inline: auto;
+  padding: 1em;
+
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  margin: 0;
+}
+
+
+
+.profile-picture {
+  margin-top: 0.5em;
+
+  background-color: #c7c4c4;
+
+  height: 10em;
+  width: 10em;
+
+  border-radius: 50%;
+
+  margin-bottom: 1em;
+}
+
+.email {
+  font-weight: 700;
+  font-size: 1.25em;
+
+  margin-bottom: 0.25em;
+}
+
+.id {
+  margin-bottom: 0.75em
+}
+
+.trades-wrap {
+  display: flex;
+  gap: 0.5em;
+
+  .trades-number {
+    font-weight: 700;
+  }
+
+  margin-bottom: 1em;
+}
+
+.edit-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+
+  .mat-icon {
+    font-size: 1.25em;
+  }
+}
+
+$bg-color: rgba(64, 65, 70, 0.67);
+
+button {
+  outline: none;
+  border: none;
+
+  padding: 1em 1em;
+  margin-bottom: 1em;
+
+
+  color: #FFD700 !important;
+  background-color: $bg-color;
+  font-size: 18px;
+  font-weight: 800;
+
+  box-shadow: 0 0 5px rgba(157, 156, 160, 0.14);
+
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+
+  &:active {
+
+  }
+
+  &:disabled {
+    filter: brightness(80%);
+  }
+}
+
+.joined-wrap {
+  margin-top: auto;
+}
+
+
+// Desktop
+@media screen and (min-width: 900px) {
+  #wrap {
+    width: 70%
+  }
+}
