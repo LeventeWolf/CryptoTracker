@@ -21,6 +21,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MarketsComponent} from './pages/markets/markets.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     RegisterComponent,
     MarketsComponent,
     ProfileComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,

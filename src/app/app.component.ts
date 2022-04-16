@@ -2,7 +2,6 @@ import {Component, Input, Output} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import firebase from 'firebase/compat';
 import {filter} from "rxjs";
-// @ts-ignore
 import {AuthService} from "./shared/services/auth.service";
 import {MatDrawer, MatSidenav} from "@angular/material/sidenav";
 
