@@ -1,0 +1,22 @@
+<div id="main-wrap" class="appear">
+  <div class="info-wrap">
+    <img class="coin-image" src="{{coin.image['large']}}" alt="{{coin.id}}-img">
+    <div class="coin-name">{{coin.name}}</div>
+    <div class="coin-description">{{this.coin.description['en'].split('. ')[0] + '.'}}</div>
+    <div class="coin-info-wrap">
+      <span class="info-title">Rank:</span>
+      <span class="info-value">{{coin.market_cap_rank}}</span>
+    </div>
+    <div class="coin-info-wrap">
+      <span class="info-title">Current Price:</span>
+      <span class="info-value">$ {{coin.market_data.current_price['usd']}}</span>
+    </div>
+    <div class="coin-info-wrap">
+      <span class="info-title">Market Cap:</span>
+      <span class="info-value">$ {{coin.market_data.market_cap['usd']}}M</span>
+    </div>
+  </div>
+  <div class="trade-wrap">
+
+  </div>
+</div>
