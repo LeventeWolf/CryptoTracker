@@ -22,6 +22,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MarketsComponent} from './pages/markets/markets.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
+import { CryptoComponent } from './pages/crypto/crypto.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
     MarketsComponent,
     ProfileComponent,
     TruncatePipe,
+    CryptoComponent,
   ],
   imports: [
     BrowserModule,

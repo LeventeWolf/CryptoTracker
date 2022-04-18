@@ -5,17 +5,19 @@ import { MainRoutingModule } from './main-routing.module';
 import { CryptoTableComponent } from '../shared/crypto-table/crypto-table.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { RoundNumberPipe } from '../../shared/pipes/round-number.pipe';
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
     CarouselComponent,
     RoundNumberPipe,
-    CryptoTableComponent
+    CryptoTableComponent,
   ],
   exports: [
     CarouselComponent,
     CryptoTableComponent,
+    MatButtonModule,
   ],
   imports: [
     CommonModule,

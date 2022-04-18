@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Coin, fetchCoins} from "../main.component";
+import {fetchCoins} from "../main.component";
+import {Coin} from "../../../shared/models/coinTable";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-carousel',
@@ -11,7 +13,7 @@ export class CarouselComponent implements OnInit {
   innerWidth = window.innerWidth;
   private readonly _number_of_coins: number;
 
-  constructor() {
+  constructor(private router:Router) {
     if (innerWidth < 600) {
       this._number_of_coins = 3;
     } else {
@@ -49,4 +51,7 @@ export class CarouselComponent implements OnInit {
     return result;
   }
 
+  menuSwitch(id: string) {
+    this.router.navigateByUrl('crypto/' + id)
+  }
 }

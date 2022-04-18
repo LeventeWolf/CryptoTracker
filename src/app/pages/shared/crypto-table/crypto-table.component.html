@@ -3,29 +3,29 @@
 
   <table>
     <thead>
-    <th>Coin</th>
-    <th>Price</th>
-    <th>24h Change</th>
-    <th>Market Cap</th>
+      <th>Coin</th>
+      <th>Price</th>
+      <th>24h Change</th>
+      <th>Market Cap</th>
     </thead>
     <tbody>
-    <tr *ngFor="let coin of coins">
-      <td>
-        <div class="coin">
-          <img src="{{coin.image}}" alt="{{coin.id}}'-img'"/>
-          <div class="name-container">
-            <span class="symbol">{{coin.symbol}}</span>
-            <span class="name">{{coin.name}}</span>
+      <tr *ngFor="let coin of coins" (click)="menuSwitch(coin.id)">
+        <td>
+          <div class="coin">
+            <img src="{{coin.image}}" alt="{{coin.id}}'-img'"/>
+            <div class="name-container">
+              <span class="symbol">{{coin.symbol}}</span>
+              <span class="name">{{coin.name}}</span>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>${{numberWithCommas(coin.current_price)}}</td>
-      <td [ngStyle]="{'color': (coin.price_change_percentage_24h >= 0) ? '#0ecb81' : 'red'}">
-        {{coin.price_change_percentage_24h > 0 ? '+' + (coin.price_change_percentage_24h | roundNumber) :
-        coin.price_change_percentage_24h | roundNumber}}%
-      </td>
-      <td>{{marketCap(coin.market_cap)}}</td>
-    </tr>
+        </td>
+        <td>${{numberWithCommas(coin.current_price)}}</td>
+        <td [ngStyle]="{'color': (coin.price_change_percentage_24h >= 0) ? '#0ecb81' : 'red'}">
+          {{coin.price_change_percentage_24h > 0 ? '+' + (coin.price_change_percentage_24h | roundNumber) :
+          coin.price_change_percentage_24h | roundNumber}}%
+        </td>
+        <td>{{marketCap(coin.market_cap)}}</td>
+      </tr>
     </tbody>
   </table>
 </div>

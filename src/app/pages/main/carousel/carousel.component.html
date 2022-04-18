@@ -4,7 +4,7 @@
 
   <div class="carousel-wrap">
 
-    <div class="hot-crypto-wrap appear" *ngFor="let coin of random_coins">
+    <div class="hot-crypto-wrap appear" *ngFor="let coin of random_coins" (click)="menuSwitch(coin.id)">
       <img src="{{coin.image}}" alt="coin"/>
       <div class="name-wrap">
         <span class="symbol">{{coin.symbol}}</span>

@@ -27,6 +27,9 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule),
   },
+  { path: 'crypto/:id',
+    loadChildren: () => import('./pages/crypto/crypto.module').then(m => m.CryptoModule)
+  },
   // {path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule),
   //   canActivate: [AuthGuard] },
   // {path: '**', redirectTo: '/not-found'}
