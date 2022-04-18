@@ -10,7 +10,7 @@ export interface Coin  {
   market_data: {
     current_price: {usd: number},
     market_cap: {usd: number},
-    price_change_percentage_24h: {usd: number},
+    price_change_percentage_24h: number,
   },
   market_cap_rank: number;
   description: {
@@ -28,7 +28,7 @@ export const defaultCoin: Coin = {
   market_data: {
     current_price: {usd: 0},
     market_cap: {usd: 0},
-    price_change_percentage_24h: {usd: 0},
+    price_change_percentage_24h: 0,
   },
   name: "",
   market_cap_rank: 0,

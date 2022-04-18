@@ -9,7 +9,7 @@ import {MainModule} from "./pages/main/main.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {provideAuth, getAuth} from '@angular/fire/auth';
 import {provideFirestore, getFirestore} from '@angular/fire/firestore';
 import {provideStorage, getStorage} from '@angular/fire/storage';
@@ -23,6 +23,10 @@ import {MarketsComponent} from './pages/markets/markets.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { CryptoComponent } from './pages/crypto/crypto.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -49,9 +53,14 @@ import { CryptoComponent } from './pages/crypto/crypto.component';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     MatProgressSpinnerModule,
+    MatNativeDateModule,
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatDatepickerModule,
   ],
   providers: [],
   exports: [],

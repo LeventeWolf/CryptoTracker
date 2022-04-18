@@ -18,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
     CarouselComponent,
     CryptoTableComponent,
     MatButtonModule,
+    RoundNumberPipe,
   ],
   imports: [
     CommonModule,

@@ -1,27 +1,26 @@
+$coin-green: #2EBD85;
+$coin-red: #F6465D;
+
+main {
+  background-image: url("../../../assets/banner.jpg");
+}
+
 #main-wrap {
   width: min(100% - 2rem, 100%);
   margin-inline: auto;
-
-  height: 600px;
-
-  //margin-top: 1em;
-
-  //border: 1px solid grey;
-  border-radius: 1em;
-}
-
-.page-title {
-  margin-top: 0;
 }
 
 .info-wrap {
+  padding: 1em;
+
   display: flex;
   flex-direction: column;
   gap: 1em;
 
-  padding: 1em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.47);
+
   .coin-image {
-    width: 13em;
+    width: 5em;
     align-self: center;
   }
 
@@ -53,7 +52,120 @@
 }
 
 .trade-wrap {
-  //background-color: salmon;
+  //border: 1px solid blue;
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .title-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75em;
+
+    font-weight: 500;
+
+    .mat-icon {
+      font-size: 1.5em;
+    }
+
+    .change {
+      margin-left: 1em;
+    }
+  }
+
+  .form-wrap {
+    align-self: center;
+
+    width: 100%;
+  }
+
+  form {
+    select, input {
+      display: block;
+      width: 100%;
+      padding: 0 10px;
+      margin-top: 0.5em;
+
+      color: white;
+      font-size: large;
+      font-weight: 300;
+
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.07);
+
+      outline: none;
+      border: none;
+    }
+
+    select {
+      height: 30px;
+
+      option {
+        color: black;
+        background-color: rgba(255, 255, 255, 0.07);
+      }
+    }
+
+    input {
+      height: 50px;
+    }
+
+    .trade-option {
+      padding-right: 1em !important;
+    }
+
+    #time {
+      width: 100%;
+      padding-right: 1.3em;
+      color: white !important;
+    }
+
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(100%);
+    }
+  }
+
+  ::ng-deep .mat-form-field {
+    margin-top: 0.5em;
+
+    align-self: center;
+    width: 100%;
+
+    .mat-form-field-flex {
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      color: white;
+    }
+  }
+
+
+  .button-wrap {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    $trade-color: #ffffff;
+
+
+    .buy, .sell {
+      color: $trade-color !important;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .buy {
+      background-color: $coin-green;
+    }
+
+    .sell {
+      background-color: $coin-red;
+    }
+  }
 }
 
 
@@ -64,9 +176,23 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    height: 600px;
+    background-color: #181818;
   }
 
   .info-wrap {
     border-right: 1px solid rgba(128, 128, 128, 0.47);
+    border-bottom: none;
+
+    .coin-image {
+      width: 10em;
+    }
+  }
+
+  .trade-wrap {
+    .form-wrap {
+      width: 100%;
+    }
   }
 }
