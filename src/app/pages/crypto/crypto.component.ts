@@ -13,7 +13,6 @@ import {Coin, defaultCoin} from "../../shared/models/coin";
 export class CryptoComponent implements OnInit {
   coin: Coin = defaultCoin;
   value: number = 0;
-  dateGroup: any;
 
   constructor(private route: ActivatedRoute) {
   }
