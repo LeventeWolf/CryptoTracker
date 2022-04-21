@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {SingleCoin} from "../../../api/api";
 import Axios from "axios";
 import {Coin, defaultCoin} from "../../shared/models/coin";
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -13,8 +14,15 @@ import {Coin, defaultCoin} from "../../shared/models/coin";
 export class CryptoComponent implements OnInit {
   coin: Coin = defaultCoin;
   value: number = 0;
+  tradeForm: FormGroup;
 
   constructor(private route: ActivatedRoute) {
+    this.tradeForm = new FormGroup({
+      currency: new FormControl(''),
+      crypto: new FormControl(''),
+      date: new FormControl(''),
+      time: new FormControl(''),
+    });
   }
 
   ngOnInit(): void {
@@ -30,6 +38,22 @@ export class CryptoComponent implements OnInit {
       })
   }
 
+  get form() {return this.tradeForm.controls;}
 
+  onSubmit() {
+    console.log('- Form submitted - ');
+    const currency = this.form['currency'].value;
+    const crypto = this.form['crypto'].value;
+    const date = this.form['date'].value;
+    const time = this.form['time'].value;
 
+    const formValue = {
+      currency,
+      crypto,
+      date,
+      time
+    }
+
+    console.table(formValue)
+  }
 }
