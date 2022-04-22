@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/services/auth.service";
+import {UserService} from "../../shared/services/user.service";
+import {User} from "../../shared/models";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,7 @@ export class RegisterComponent implements OnInit {
   error: string | null;
   loading: boolean;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private userService: UserService) {
     this.error = null;
     this.submitted = false;
     this.loading = false;
@@ -51,13 +53,24 @@ export class RegisterComponent implements OnInit {
 
     // If everything fine, login and redirect
     this.authService.register(this.form['email'].value, this.form['password'].value)
-      .then(_ => {
+      .then((cred: any) => {
+        const user: User = {
+          id: cred.user?.uid as string,
+          email: this.form['email'].value
+        };
+
+        this.userService.create(user).then(_ => {
+          console.log('User added successfully.');
           this.router.navigateByUrl('/');
-      }).catch(error => {
-          this.error = errors[error.code];
-          this.loading = false;
-          this.submitted = false;
-    });
+        }).catch(error => {
+          console.error(error);
+        })
+      })
+      .catch(error => {
+        this.error = errors[error.code];
+        this.loading = false;
+        this.submitted = false;
+      });
 
   }
 }
