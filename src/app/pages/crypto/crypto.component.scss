@@ -139,7 +139,7 @@ main {
             background-color: rgba(255, 255, 255, 0.07);
           }
 
-          #mat-input-0 {
+          [id^=mat-input-] {
             background-color: transparent;
             padding: 0;
           }

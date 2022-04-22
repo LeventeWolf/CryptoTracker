@@ -10,16 +10,17 @@
     </div>
     <div class="coin-info-wrap">
       <span class="info-title">Current Price:</span>
-      <span class="info-value">$ {{coin.market_data.current_price['usd']}}</span>
+      <span class="info-value">$ {{coin.market_data.current_price['usd'] | numberWithCommas}}</span>
     </div>
     <div class="coin-info-wrap">
       <span class="info-title">Market Cap:</span>
-      <span class="info-value">$ {{coin.market_data.market_cap['usd']}}M</span>
+      <span class="info-value">$ {{coin.market_data.market_cap['usd'] | numberWithCommas}}</span>
     </div>
   </div>
 
   <!-- Trade  -->
   <div class="trade-wrap">
+    <!-- Title  -->
     <div class="title-wrap">
       <mat-icon [inline]="true">swap_vert</mat-icon>
       <span class="symbol">{{coin.symbol | uppercase}}/USD</span>
@@ -31,34 +32,38 @@
       </span>
     </div>
 
-    <!--  TODO: merge two forms -->
+    <!-- Form  -->
     <div class="form-wrap">
-      <form [formGroup]="tradeForm" (submit)="onSubmit()">
+      <form [formGroup]="tradeForm">
         <div class="empty-format"></div>
 
-        <select class="trade-option" name="trade-option">
+        <!-- Option  -->
+        <select (change)="swapType()" class="trade-option" name="trade-option">
           <option value="limit" selected>Limit</option>
           <option value="market">Market</option>
         </select>
-        <input type="text" placeholder="Amount (USD)" id="amount-eur"
-               formControlName="currency" />
-        <input type="text" placeholder="Amount ({{coin.symbol | uppercase}})" id="amount-coin"
-               formControlName="crypto" />
 
-        <!--  TODO: ngIf trade-option=limit -->
-        <div class="trade-date-wrap">
+        <!-- Inputs  -->
+        <input type="text" placeholder="Amount (USD)" id="amount-eur" formControlName="currency" autocomplete="off" />
+        <input type="text" placeholder="Amount ({{coin.symbol | uppercase}})" id="amount-coin" formControlName="crypto" autocomplete="off" />
+
+        <div *ngIf="type === 'limit'" class="trade-date-wrap">
+          <!-- Date  -->
           <mat-form-field appearance="fill">
             <mat-label>Choose a date</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+
+          <!-- Time  -->
           <input type="time" id="time" name="time" min="00:00" max="24:00" formControlName="time">
         </div>
 
+        <!-- Buy & Sell  -->
         <div class="button-wrap">
-          <button mat-raised-button class="buy">Buy {{coin.symbol | uppercase}}</button>
-          <button mat-raised-button class="sell">Sell {{coin.symbol | uppercase}} </button>
+          <button (click)="onSubmit('buy')" mat-raised-button class="buy">Buy {{coin.symbol | uppercase}}</button>
+          <button (click)="onSubmit('sell')" mat-raised-button class="sell">Sell {{coin.symbol | uppercase}} </button>
         </div>
       </form>
 

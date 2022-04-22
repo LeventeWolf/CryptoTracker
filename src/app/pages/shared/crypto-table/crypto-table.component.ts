@@ -37,6 +37,7 @@ export class CryptoTableComponent implements OnInit {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+
   menuSwitch(coin: string) {
     this.router.navigateByUrl('crypto/' + coin)
   }

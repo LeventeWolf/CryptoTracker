@@ -15,6 +15,7 @@ export class CryptoComponent implements OnInit {
   coin: Coin = defaultCoin;
   value: number = 0;
   tradeForm: FormGroup;
+  type: 'limit' | 'market' = 'limit';
 
   constructor(private route: ActivatedRoute) {
     this.tradeForm = new FormGroup({
@@ -40,7 +41,7 @@ export class CryptoComponent implements OnInit {
 
   get form() {return this.tradeForm.controls;}
 
-  onSubmit() {
+  onSubmit(action?: string | undefined) {
     console.log('- Form submitted - ');
     const currency = this.form['currency'].value;
     const crypto = this.form['crypto'].value;
@@ -54,6 +55,17 @@ export class CryptoComponent implements OnInit {
       time
     }
 
+    console.log(action)
     console.table(formValue)
+
+
+  }
+
+  swapType() {
+    if (this.type === 'limit') {
+      this.type = 'market';
+    } else {
+      this.type = 'limit';
+    }
   }
 }
