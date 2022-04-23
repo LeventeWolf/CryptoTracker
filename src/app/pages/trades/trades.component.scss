@@ -59,9 +59,21 @@ main {
     .status {
       padding: 0.25em;
       border-radius: 10%;
-      background-color: rgba(46, 189, 133, 0.24);
-      color: $coin-green;
       font-weight: 500;
+    }
+
+    .status-buy {
+      color: $coin-green;
+      background-color: rgba(46, 189, 133, 0.24);
+    }
+
+    .status-sell {
+      background-color: rgba(246, 70, 93, 0.24);
+      color: $coin-red;
+    }
+
+    .status-cancel {
+      background-color: rgba(57, 54, 54, 0.24);
     }
   }
 
@@ -77,13 +89,15 @@ main {
 
 }
 
-.green {
+.buy {
   color: $coin-green;
 }
 
-.red {
+.sell {
   color: $coin-red;
 }
+
+
 
 
 // Desktop

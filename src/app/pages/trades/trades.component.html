@@ -3,24 +3,28 @@
     <h1 class="page-title">Trades</h1>
 
     <div class="trades-container">
-      <div class="trade-wrap">
+      <div *ngIf="trades.length === 0">
+        You don't have any trades
+      </div>
+
+      <div class="trade-wrap" *ngFor="let trade of trades">
         <div class="title-wrap">
-          <span class="name">ADA/USD</span>
-          <span class="date">2022-02-18 20:27:53</span>
+          <span class="name">{{trade.coinSymbol | uppercase}}/USD</span>
+          <span class="date">{{trade.date}}</span>
         </div>
         <div class="action-wrap">
-          <span class="action green">Limit/Buy</span>
-          <span class="status">Filled</span>
+          <span class="action" [ngClass]="calculateClass(trade.type)">{{trade.action | titlecase}}/{{trade.type | titlecase}}</span>
+          <span class="status" [ngClass]="calculateClassStatus(trade.type)">{{trade.status}}</span>
         </div>
 
         <div class="amount-wrap">
           <span class="amount-name">Amount</span>
-          <span class="amount-value">2</span>
+          <span class="amount-value">{{trade.coinAmount}}</span>
         </div>
 
         <div class="price-wrap">
           <span class="price-name">Price</span>
-          <span class="price-value">39,500</span>
+          <span class="price-value">{{trade.price}}</span>
         </div>
       </div>
     </div>

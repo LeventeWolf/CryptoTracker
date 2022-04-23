@@ -115,6 +115,7 @@ export class TradeComponent implements OnInit, OnChanges {
       coinAmount,
       date: '',
       status: 'filled',
+      coinSymbol: this.coin.symbol,
       price: this.coin.market_data.current_price.usd,
       dateLimit: {targetDate, targetTime},
       limit: {targetPrice}

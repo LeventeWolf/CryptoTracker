@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Trade} from "../../shared/models/trade";
+import {TradeService} from "../../shared/services/trade.service";
+import firebase from "firebase/compat/app";
 
 @Component({
   selector: 'app-trades',
@@ -6,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trades.component.scss']
 })
 export class TradesComponent implements OnInit {
+  trades: Trade[] = [];
 
-  constructor() { }
+  constructor(private tradesService: TradeService) {
+    const userID = JSON.parse(localStorage['user']).uid;
 
-  ngOnInit(): void {
+    tradesService.getAllByUserID(userID).subscribe(trades => {
+      this.trades = trades;
+    });
   }
 
+  ngOnInit(): void {
+
+  }
+
+
+  uid() {
+    if (!firebase.auth().currentUser) {
+      return null;
+    }
+
+    // @ts-ignore
+    return firebase.auth().currentUser.uid
+  }
+
+  calculateClass(type: 'buy' | 'sell') {
+    return [type];
+  }
+
+  calculateClassStatus(type: "buy" | "sell") {
+    return ['status-' + type];
+  }
 }

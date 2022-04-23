@@ -21,15 +21,18 @@ export class TradeService {
   create(trade: Trade) {
     trade.id = this.afs.createId();
     trade.date = this.getDate();
+
     return this.afs.collection<Trade>(this.collectionName).doc(trade.id).set(trade);
+  }
+
+  getAllByUserID(userID: any) {
+    return this.afs.collection<Trade>(this.collectionName, ref => ref.where('userID', '==', userID)
+          .orderBy('date', 'asc'))
+          .valueChanges();
   }
 
   getAll() {
     return this.afs.collection<Trade>(this.collectionName).valueChanges();
-  }
-
-  getByUserId(id: string) {
-    return this.afs.collection<Trade>(this.collectionName).doc(id).valueChanges();
   }
 
   update(trade: Trade) {

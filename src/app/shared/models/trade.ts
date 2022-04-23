@@ -2,6 +2,7 @@ export interface Trade {
   id: string,
   userID: string,
   cryptoID: string,
+  coinSymbol: string,
   currencyAmount: number,
   coinAmount: number,
   action: 'limit' | 'market',
