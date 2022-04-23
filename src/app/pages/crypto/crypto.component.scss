@@ -81,7 +81,6 @@ main {
     width: 100%;
     height: 100%;
 
-
     form {
       display: flex;
       flex-direction: column;
@@ -201,6 +200,30 @@ main {
           align-items: center;
           background-color: rgba(255, 255, 255, 0.07);
         }
+      }
+
+      .invalid-field {
+        margin-top: -0.75em;
+        margin-bottom: 0.5em;
+      }
+
+      .target-price {
+        height: 50px;
+        width: 6em;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 0.8em;
+        padding-inline: 0.1em;
+
+        user-select: none;
+        -webkit-user-select: none;
+
+        color: grey;
+
+        background-color: rgba(255, 255, 255, 0.07);
       }
     }
   }

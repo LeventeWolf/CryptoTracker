@@ -1,9 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SingleCoin} from "../../../api/api";
 import Axios from "axios";
 import {Coin, defaultCoin} from "../../shared/models/coin";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TradeService} from "../../shared/services/trade.service";
+import firebase from "firebase/compat/app";
+import {Trade} from "../../shared/models/trade";
 
 
 @Component({
@@ -14,16 +17,23 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class CryptoComponent implements OnInit {
   coin: Coin = defaultCoin;
   value: number = 0;
-  tradeForm: FormGroup;
-  type: 'limit' | 'market' = 'limit';
+  tradeForm!: FormGroup;
+  action: 'market' | 'limit' | 'date' = 'limit';
+  submitted: boolean = false;
 
-  constructor(private route: ActivatedRoute) {
+  initForm() {
     this.tradeForm = new FormGroup({
-      currency: new FormControl(''),
-      crypto: new FormControl(''),
-      date: new FormControl(''),
-      time: new FormControl(''),
+      action: new FormControl(this.action, [Validators.required]),
+      currency: new FormControl('', [Validators.required]),
+      crypto: new FormControl('', [Validators.required]),
+      targetPrice: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required]),
+      time: new FormControl('', [Validators.required]),
     });
+  }
+
+  constructor(private route: ActivatedRoute, private tradeService: TradeService, private router: Router) {
+    this.initForm();
   }
 
   ngOnInit(): void {
@@ -39,25 +49,85 @@ export class CryptoComponent implements OnInit {
       })
   }
 
-  get form() {return this.tradeForm.controls;}
-
-  onSubmit(action?: string | undefined) {
-    console.log('- Form submitted - ');
-    const currency = this.form['currency'].value;
-    const crypto = this.form['crypto'].value;
-    const date = this.form['date'].value;
-    const time = this.form['time'].value;
-
-    console.log(action)
-    console.table({currency, crypto, date, time})
+  get form() {
+    return this.tradeForm.controls;
   }
 
-  swapType() {
-    if (this.type === 'limit') {
-      this.type = 'market';
-    } else {
-      this.type = 'limit';
+  onSubmit(type: 'buy' | 'sell') {
+    this.submitted = true;
+
+    const userID = firebase.auth().currentUser?.uid;
+    const action = this.form['action'].value;
+
+    if (!userID) {
+      this.router.navigateByUrl('/login');
+      return;
     }
+
+    // Remove 'limit' & 'date' validators
+    if (action === 'market') {
+      this.form['date'].clearValidators();
+      this.form['date'].updateValueAndValidity();
+      this.form['time'].clearValidators();
+      this.form['time'].updateValueAndValidity();
+
+      this.form['targetPrice'].clearValidators();
+      this.form['targetPrice'].updateValueAndValidity();
+    }
+
+    // Remove 'date' validators
+    if (action === 'limit') {
+      this.form['date'].clearValidators();
+      this.form['date'].updateValueAndValidity();
+      this.form['time'].clearValidators();
+      this.form['time'].updateValueAndValidity();
+    }
+
+    // Remove 'limit' validators
+    if (action === 'date') {
+      this.form['targetPrice'].clearValidators();
+      this.form['targetPrice'].updateValueAndValidity();
+    }
+
+    // If form invalid return
+    if (this.tradeForm.invalid) {
+      console.error('Form is invalid!');
+      return;
+    }
+
+    const currencyAmount = this.form['currency'].value;
+    const coinAmount = this.form['crypto'].value;
+
+    const targetPrice = this.form['targetPrice'].value;
+    const targetDate = this.form['date'].value;
+    const targetTime = this.form['time'].value;
+
+    if (currencyAmount <= 0 || coinAmount <= 0) {
+      console.error('Currency | Crypto must be positive!')
+      return;
+    }
+
+    const trade: Trade = {id: '', userID, cryptoID: this.coin.id,
+      type, action,
+      currencyAmount,
+      coinAmount,
+      date: '',
+      dateLimit: {targetDate, targetTime},
+      limit: {targetPrice}
+    };
+
+    this.tradeService.create(trade)
+      .then(_ => {
+        console.log(`Trade created successfully!`)
+        this.submitted = false;
+        this.initForm();
+      })
+      .catch(error => {
+        console.error(`[ERROR] TradeService.create()`)
+        this.submitted = false;
+        this.initForm();
+        console.log(error)
+      });
   }
 
   updateCrypto() {
@@ -116,5 +186,9 @@ export class CryptoComponent implements OnInit {
     } else {
       this.updateCrypto();
     }
+  }
+
+  toggleOption() {
+    this.action = this.form['action'].value;
   }
 }

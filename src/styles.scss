@@ -25,6 +25,17 @@ html, body { height: 100%; }
   margin: 0.4em 0;
 }
 
+// Input error messages
+small {
+  top: 0.5em;
+  position: relative;
+}
+
+.invalid-field {
+  color: red !important;
+}
+
+
 // Animations
 .appear {
   animation-name: appear;

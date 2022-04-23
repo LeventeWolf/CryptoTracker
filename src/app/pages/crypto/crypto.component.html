@@ -38,9 +38,10 @@
         <div class="empty-format"></div>
 
         <!-- Option  -->
-        <select (change)="swapType()" class="trade-option" name="trade-option">
+        <select (change)="toggleOption()" class="trade-option" name="trade-option" formControlName="action">
           <option value="limit" selected>Limit</option>
           <option value="market">Market</option>
+          <option value="date">Date Limit</option>
         </select>
 
         <!-- Inputs  -->
@@ -52,6 +53,9 @@
                  (input)="updateCrypto()"/>
           <button mat-button class="action" (click)="increase('currency')">+</button>
         </div>
+        <small class="invalid-field" *ngIf="submitted && tradeForm.controls['currency'].hasError('required')">
+          Field is required!
+        </small>
 
         <div class="input-wrap">
           <button mat-button class="action" (click)="decrease('crypto')">-</button>
@@ -62,7 +66,24 @@
           <button mat-button class="action" (click)="increase('crypto')">+</button>
         </div>
 
-        <div *ngIf="type === 'limit'" class="trade-date-wrap">
+        <small class="invalid-field" *ngIf="submitted && tradeForm.controls['crypto'].hasError('required')">
+          Field is required!
+        </small>
+
+        <div *ngIf="action === 'limit'" class="trade-market-wrap">
+          <div class="input-wrap">
+            <span class="target-price">Target</span>
+            <input class="amount" type="text" placeholder="Target price ({{coin.symbol | uppercase}})"
+                   autocomplete="off"
+                   formControlName="targetPrice"/>
+          </div>
+
+          <small class="invalid-field" *ngIf="submitted && tradeForm.controls['targetPrice'].hasError('required')">
+            Field is required!
+          </small>
+        </div>
+
+        <div *ngIf="action === 'date'" class="trade-date-wrap">
           <!-- Date  -->
           <mat-form-field appearance="fill">
             <mat-label>Choose a date</mat-label>
