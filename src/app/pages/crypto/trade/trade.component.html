@@ -76,9 +76,13 @@
       </div>
 
       <!-- Buy & Sell  -->
-      <div class="button-wrap">
+      <div *ngIf="!loading" class="button-wrap">
         <button (click)="onSubmit('buy')" mat-raised-button class="buy">Buy {{coin.symbol | uppercase}}</button>
         <button (click)="onSubmit('sell')" mat-raised-button class="sell">Sell {{coin.symbol | uppercase}} </button>
+      </div>
+
+      <div *ngIf="loading" class="spinner-wrap">
+        <mat-spinner [diameter]="35"></mat-spinner>
       </div>
     </form>
 

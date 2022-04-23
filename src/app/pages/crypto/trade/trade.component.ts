@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Coin} from "../../../shared/models/coin";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,12 +11,13 @@ import {Trade} from "../../../shared/models/trade";
   templateUrl: './trade.component.html',
   styleUrls: ['./trade.component.scss']
 })
-export class TradeComponent implements OnInit {
+export class TradeComponent implements OnInit, OnChanges {
   @Input() coin!: Coin;
   value: number = 0;
   tradeForm!: FormGroup;
   action: 'market' | 'limit' | 'date' = 'limit';
   submitted: boolean = false;
+  loading: boolean = false;
 
   constructor(private route: ActivatedRoute, private tradeService: TradeService, private router: Router) {
     this.initForm();
@@ -25,12 +26,22 @@ export class TradeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  ngOnChanges(): void {
+    if (this.action === 'limit') {
+      this.form['targetPrice'].setValue(this.coin.market_data.current_price.usd);
+    }
+  }
+
   initForm() {
+    this.submitted = false;
+    this.loading = false;
+
     this.tradeForm = new FormGroup({
       action: new FormControl(this.action, [Validators.required]),
       currency: new FormControl('', [Validators.required]),
       crypto: new FormControl('', [Validators.required]),
-      targetPrice: new FormControl('', [Validators.required]),
+      targetPrice: new FormControl(this.coin?.market_data.current_price.usd || 0, [Validators.required]),
       date: new FormControl('', [Validators.required]),
       time: new FormControl('', [Validators.required]),
     });
@@ -42,6 +53,7 @@ export class TradeComponent implements OnInit {
 
   async onSubmit(type: 'buy' | 'sell') {
     this.submitted = true;
+    this.loading = true;
 
     const userID = firebase.auth().currentUser?.uid;
     const action = this.form['action'].value;
@@ -79,6 +91,7 @@ export class TradeComponent implements OnInit {
     // If form invalid return
     if (this.tradeForm.invalid) {
       console.error('Form is invalid!');
+      this.loading = false;
       return;
     }
 
@@ -108,11 +121,14 @@ export class TradeComponent implements OnInit {
       .then(_ => {
         console.log(`Trade created successfully!`)
         this.submitted = false;
+        this.loading = false;
         this.initForm();
+
       })
       .catch(error => {
         console.error(`[ERROR] TradeService.create()`)
         this.submitted = false;
+        this.loading = false;
         this.initForm();
         console.log(error)
       });
@@ -178,6 +194,8 @@ export class TradeComponent implements OnInit {
 
   toggleOption() {
     this.action = this.form['action'].value;
+
+    this.initForm();
   }
 
 }
