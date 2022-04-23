@@ -1,0 +1,94 @@
+$bg-color: rgba(20, 22, 26, 0.32);
+$coin-green: #2EBD85;
+$coin-red: #F6465D;
+
+main {
+  background-image: url("../../../assets/banner.jpg");
+  height: 100vh;
+}
+
+#main-wrap {
+  width: 100%;
+  height: 100vh;
+  margin-inline: auto;
+
+  background-color: $bg-color;
+  backdrop-filter: blur(5px);
+}
+
+.page-title {
+  padding-top: 0.25em;
+  margin: 0;
+}
+
+.trades-container {
+  padding: 1em;
+}
+
+.trade-wrap {
+  margin-block: 1em;
+  border-bottom: 1px solid #3f3e3e;
+  letter-spacing: 0.5px;
+
+  .title-wrap, .action-wrap, .amount-wrap, .price-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title-wrap {
+    margin-bottom: 0.5em;
+
+    .name {
+      font-weight: 600;
+    }
+
+    .date {
+      color: #7F8690;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+  }
+
+  .action-wrap {
+    margin-bottom: 0.5em;
+
+    .action {
+      font-weight: 600;
+    }
+
+    .status {
+      padding: 0.25em;
+      border-radius: 10%;
+      background-color: rgba(46, 189, 133, 0.24);
+      color: $coin-green;
+      font-weight: 500;
+    }
+  }
+
+
+  .amount-wrap, .price-wrap {
+    margin-bottom: 0.5em;
+    font-weight: 500;
+
+    .amount-name, .price-name {
+      color: #88909c;
+    }
+  }
+
+}
+
+.green {
+  color: $coin-green;
+}
+
+.red {
+  color: $coin-red;
+}
+
+
+// Desktop
+@media screen and (min-width: 900px) {
+  #main-wrap {
+    width: 70%;
+  }
+}

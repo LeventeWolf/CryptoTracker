@@ -107,12 +107,15 @@ export class TradeComponent implements OnInit, OnChanges {
       return;
     }
 
+
     const trade: Trade = {
       id: '', userID, cryptoID: this.coin.id,
       type, action,
       currencyAmount,
       coinAmount,
       date: '',
+      status: 'filled',
+      price: this.coin.market_data.current_price.usd,
       dateLimit: {targetDate, targetTime},
       limit: {targetPrice}
     };
