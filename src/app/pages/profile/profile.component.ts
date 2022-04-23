@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import firebase from "firebase/compat/app";
+import {TradeService} from "../../shared/services/trade.service";
+import {User} from "../../shared/models";
 
 @Component({
   selector: 'app-profile',
@@ -7,28 +8,20 @@ import firebase from "firebase/compat/app";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  tradesLength: number = 0;
+  favouritesLength: number = 0;
+  user!: User;
 
-  constructor() { }
+  constructor(private tradesService: TradeService) {
+    this.user = JSON.parse(localStorage['user']);
+
+    tradesService.getNumberOfTradesByUserID(this.user.uid).subscribe(trades => {
+      this.tradesLength = trades.length;
+    });
+  }
 
 
   ngOnInit(): void {
   }
 
-  email() {
-    if (!firebase.auth().currentUser) {
-      return null;
-    }
-
-    // @ts-ignore
-    return firebase.auth().currentUser.email;
-  }
-
-  uid() {
-    if (!firebase.auth().currentUser) {
-      return null;
-    }
-
-    // @ts-ignore
-    return firebase.auth().currentUser.uid
-  }
 }

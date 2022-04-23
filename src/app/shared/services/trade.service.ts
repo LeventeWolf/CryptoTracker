@@ -25,7 +25,7 @@ export class TradeService {
     return this.afs.collection<Trade>(this.collectionName).doc(trade.id).set(trade);
   }
 
-  getAllByUserID(userID: any) {
+  getAllByUserID(userID: string) {
     return this.afs.collection<Trade>(this.collectionName, ref => ref.where('userID', '==', userID)
           .orderBy('date', 'asc'))
           .valueChanges();
@@ -41,5 +41,10 @@ export class TradeService {
 
   delete(id: string) {
     return this.afs.collection<Trade>(this.collectionName).doc(id).delete();
+  }
+
+  getNumberOfTradesByUserID(userID: string) {
+    return this.afs.collection<Trade>(this.collectionName, ref => ref.where('userID', '==', userID))
+      .valueChanges();
   }
 }

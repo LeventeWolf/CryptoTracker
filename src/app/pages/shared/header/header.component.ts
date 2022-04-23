@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AuthService} from "../../../shared/services/auth.service";
 import {MatDrawer} from "@angular/material/sidenav";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent {
   @Input() loggedInUser?: firebase.default.User | null;
   @Input() drawer?: MatDrawer;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   menuSwitch(page: string) {
@@ -20,8 +21,8 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.authService.logout().then(() => {
-      console.log('Logged out successfully!')
+    this.authService.logout().then(async () => {
+      await this.router.navigateByUrl('');
     }).catch((error: any) => {
       console.log(error)
     });

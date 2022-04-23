@@ -56,6 +56,7 @@ export class RegisterComponent implements OnInit {
       .then((cred: any) => {
         const user: User = {
           id: cred.user?.uid as string,
+          uid: cred.user?.uid as string,
           email: this.form['email'].value
         };
 

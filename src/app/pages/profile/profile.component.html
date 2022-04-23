@@ -3,22 +3,19 @@
     <h1 class="page-title">Profile</h1>
     <hr style="width: 90%" />
       <img class="profile-picture" src="../../../assets/Wolf.jfif" alt="profile" />
-
-      <div class="email">
-        {{email()}}
-      </div>
+      <div class="email">{{user.email}}</div>
 
     <div class="id">
-      {{ uid() | truncate:[14, '...'] }}
+      {{ user.uid | truncate:[14, '...'] }}
     </div>
 
     <div class="trades-wrap">
-      <div class="trades-number">1069</div>
+      <div class="trades-number">{{tradesLength}}</div>
       <div class="trades-text">Trades</div>
     </div>
 
     <div class="trades-wrap">
-      <div class="trades-number">10</div>
+      <div class="trades-number">{{favouritesLength}}</div>
       <div class="trades-text"> Fav Crypto</div>
     </div>
 
