@@ -10,47 +10,6 @@ main {
   margin-inline: auto;
 }
 
-.info-wrap {
-  padding: 1em;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-
-  border-bottom: 1px solid rgba(128, 128, 128, 0.47);
-
-  .coin-image {
-    width: 5em;
-    align-self: center;
-  }
-
-  .coin-name {
-    font-size: 2.5em;
-    font-weight: 700;
-    align-self: center;
-  }
-
-  .coin-description {
-    text-align: justify;
-    line-height: 1.75em;
-  }
-
-  .coin-info-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    font-size: 1.25em;
-
-    .info-title {
-      font-weight: 700;
-    }
-
-    .info-value {
-
-    }
-  }
-}
-
 .trade-wrap {
   padding: 1em;
   gap: 1em;
@@ -228,7 +187,6 @@ main {
     }
   }
 }
-
 
 // Desktop
 @media screen and (min-width: 900px) {

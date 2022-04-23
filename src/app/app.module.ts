@@ -20,13 +20,16 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MarketsComponent} from './pages/markets/markets.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { TruncatePipe } from './shared/pipes/truncate.pipe';
-import { CryptoComponent } from './pages/crypto/crypto.component';
+import {ProfileComponent} from './pages/profile/profile.component';
+import {CryptoComponent} from './pages/crypto/crypto.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {CryptoModule} from "./pages/crypto/crypto.module";
+
+// Pipes
+import {TruncatePipe} from './shared/pipes/truncate.pipe';
 
 
 @NgModule({
@@ -39,7 +42,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MarketsComponent,
     ProfileComponent,
     TruncatePipe,
-    CryptoComponent,
+    CryptoComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     FormsModule,
     MatInputModule,
     MatDatepickerModule,
+    CryptoModule,
   ],
   providers: [],
   exports: [],
