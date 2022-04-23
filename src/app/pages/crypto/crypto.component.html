@@ -44,8 +44,23 @@
         </select>
 
         <!-- Inputs  -->
-        <input type="text" placeholder="Amount (USD)" id="amount-eur" formControlName="currency" autocomplete="off" />
-        <input type="text" placeholder="Amount ({{coin.symbol | uppercase}})" id="amount-coin" formControlName="crypto" autocomplete="off" />
+        <div class="input-wrap">
+          <button mat-button class="action" (click)="decrease('currency')">-</button>
+          <input class="amount" type="text" placeholder="Amount (USD)"
+                 autocomplete="off"
+                 formControlName="currency"
+                 (input)="updateCrypto()"/>
+          <button mat-button class="action" (click)="increase('currency')">+</button>
+        </div>
+
+        <div class="input-wrap">
+          <button mat-button class="action" (click)="decrease('crypto')">-</button>
+          <input class="amount" type="text" placeholder="Amount ({{coin.symbol | uppercase}})"
+                 autocomplete="off"
+                 formControlName="crypto"
+                 (input)="updateCurrency()"/>
+          <button mat-button class="action" (click)="increase('crypto')">+</button>
+        </div>
 
         <div *ngIf="type === 'limit'" class="trade-date-wrap">
           <!-- Date  -->

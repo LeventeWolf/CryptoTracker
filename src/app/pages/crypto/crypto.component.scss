@@ -88,7 +88,6 @@ main {
       gap: 0.5em;
       height: 100%;
 
-
       select, input {
         display: block;
         width: 100%;
@@ -98,7 +97,6 @@ main {
         font-size: large;
         font-weight: 300;
 
-        border-radius: 3px;
         background-color: rgba(255, 255, 255, 0.07);
 
         outline: none;
@@ -184,6 +182,25 @@ main {
 
       .empty-format {
         margin-top: auto;
+      }
+
+      .input-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .action {
+          height: 50px;
+          font-size: 1.7em;
+          cursor: pointer;
+          user-select: none;
+          -webkit-user-select: none;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(255, 255, 255, 0.07);
+        }
       }
     }
   }

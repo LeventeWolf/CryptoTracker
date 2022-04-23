@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SingleCoin} from "../../../api/api";
 import Axios from "axios";
@@ -48,17 +48,8 @@ export class CryptoComponent implements OnInit {
     const date = this.form['date'].value;
     const time = this.form['time'].value;
 
-    const formValue = {
-      currency,
-      crypto,
-      date,
-      time
-    }
-
     console.log(action)
-    console.table(formValue)
-
-
+    console.table({currency, crypto, date, time})
   }
 
   swapType() {
@@ -66,6 +57,64 @@ export class CryptoComponent implements OnInit {
       this.type = 'market';
     } else {
       this.type = 'limit';
+    }
+  }
+
+  updateCrypto() {
+    const currency = parseInt(this.form['currency'].value);
+
+    if (!currency) {
+      this.form['crypto'].setValue('');
+      return;
+    }
+
+    const current_price = this.coin.market_data.current_price.usd;
+    this.form['crypto'].setValue(currency / current_price);
+  }
+
+  updateCurrency() {
+    const crypto = parseInt(this.form['crypto'].value);
+
+    if (!crypto) {
+      this.form['currency'].setValue('');
+      return;
+    }
+
+    const current_price = this.coin.market_data.current_price.usd;
+    this.form['currency'].setValue(current_price * crypto);
+  }
+
+  decrease(inputForm: string) {
+    const value = parseInt(this.form[inputForm].value);
+
+    if (!value) {
+      this.form[inputForm].setValue(0);
+    } else if (value < 0) {
+      this.form[inputForm].setValue(0);
+    } else {
+      this.form[inputForm].setValue(value - 1);
+    }
+
+    if (inputForm === 'crypto') {
+      this.updateCurrency();
+    } else {
+      this.updateCrypto();
+    }
+  }
+
+  increase(inputForm: string) {
+    const value = parseInt(this.form[inputForm].value);
+
+    if (!value) {
+      this.form[inputForm].setValue(1);
+    } else {
+      this.form[inputForm].setValue(value + 1);
+    }
+
+    if (inputForm === 'crypto') {
+      this.updateCurrency();
+    } else {
+      this.updateCrypto();
     }
   }
 }
