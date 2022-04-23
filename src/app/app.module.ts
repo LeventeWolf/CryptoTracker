@@ -31,7 +31,6 @@ import {CryptoModule} from "./pages/crypto/crypto.module";
 // Pipes
 import {TruncatePipe} from './shared/pipes/truncate.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +66,6 @@ import {TruncatePipe} from './shared/pipes/truncate.pipe';
     CryptoModule,
   ],
   providers: [],
-  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

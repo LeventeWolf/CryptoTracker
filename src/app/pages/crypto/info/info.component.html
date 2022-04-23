@@ -9,10 +9,10 @@
   </div>
   <div class="coin-info-wrap">
     <span class="info-title">Current Price:</span>
-    <span class="info-value">$ {{coin.market_data.current_price['usd']}}</span>
+    <span class="info-value">$ {{numberWithCommas(coin.market_data.current_price['usd'])}}</span>
   </div>
   <div class="coin-info-wrap">
     <span class="info-title">Market Cap:</span>
-    <span class="info-value">$ {{coin.market_data.market_cap['usd'] }}</span>
+    <span class="info-value">$ {{numberWithCommas(coin.market_data.market_cap['usd']) }}</span>
   </div>
 </div>

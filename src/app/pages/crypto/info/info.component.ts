@@ -14,4 +14,8 @@ export class InfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  numberWithCommas(num: number) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 }

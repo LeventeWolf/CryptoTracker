@@ -6,7 +6,6 @@ import {CryptoTableComponent} from '../shared/crypto-table/crypto-table.componen
 import {CarouselComponent} from './carousel/carousel.component';
 import {RoundNumberPipe} from '../../shared/pipes/round-number.pipe';
 import {MatButtonModule} from "@angular/material/button";
-import {NumberWithCommasPipe} from "../../shared/pipes/number-with-commas.pipe";
 
 
 @NgModule({
@@ -14,14 +13,12 @@ import {NumberWithCommasPipe} from "../../shared/pipes/number-with-commas.pipe";
     CarouselComponent,
     CryptoTableComponent,
     RoundNumberPipe,
-    NumberWithCommasPipe
   ],
   exports: [
     CarouselComponent,
     CryptoTableComponent,
     MatButtonModule,
     RoundNumberPipe,
-    NumberWithCommasPipe
   ],
   imports: [
     CommonModule,
