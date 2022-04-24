@@ -5,6 +5,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TradeService} from "../../../shared/services/trade.service";
 import firebase from "firebase/compat/app";
 import {Trade} from "../../../shared/models/trade";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackbarSuccessComponent} from "../../shared/snackbar/snackbar-success.component";
+import {SnackbarErrorComponent} from "../../shared/snackbar/snackbar-error.component";
 
 @Component({
   selector: 'app-trade',
@@ -18,8 +21,9 @@ export class TradeComponent implements OnInit, OnChanges {
   action: 'market' | 'limit' | 'date' = 'limit';
   submitted: boolean = false;
   loading: boolean = false;
+  snackbarDuration = 3;
 
-  constructor(private route: ActivatedRoute, private tradeService: TradeService, private router: Router) {
+  constructor(private route: ActivatedRoute, private tradeService: TradeService, private router: Router, private _snackBar: MatSnackBar) {
     this.initForm();
   }
 
@@ -123,18 +127,21 @@ export class TradeComponent implements OnInit, OnChanges {
 
     this.tradeService.create(trade)
       .then(_ => {
-        console.log(`Trade created successfully!`)
         this.submitted = false;
         this.loading = false;
         this.initForm();
-
+        this._snackBar.openFromComponent(SnackbarSuccessComponent, {
+          duration: this.snackbarDuration * 2000,
+        });
       })
       .catch(error => {
-        console.error(`[ERROR] TradeService.create()`)
         this.submitted = false;
         this.loading = false;
         this.initForm();
         console.log(error)
+        this._snackBar.openFromComponent(SnackbarErrorComponent, {
+          duration: this.snackbarDuration * 2000,
+        });
       });
   }
 

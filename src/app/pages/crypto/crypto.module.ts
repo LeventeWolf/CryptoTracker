@@ -10,11 +10,16 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {SnackbarSuccessComponent} from "../shared/snackbar/snackbar-success.component";
+import {SnackbarErrorComponent} from "../shared/snackbar/snackbar-error.component";
 
 @NgModule({
   declarations: [
     InfoComponent,
     TradeComponent,
+    SnackbarSuccessComponent,
+    SnackbarErrorComponent,
   ],
   exports: [
     InfoComponent,
@@ -29,7 +34,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ]
 })
 export class CryptoModule { }

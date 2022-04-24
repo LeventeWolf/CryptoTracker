@@ -41,7 +41,7 @@ import {TruncatePipe} from './shared/pipes/truncate.pipe';
     MarketsComponent,
     ProfileComponent,
     TruncatePipe,
-    CryptoComponent
+    CryptoComponent,
   ],
   imports: [
     BrowserModule,
