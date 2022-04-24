@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/services/auth.service";
 import {UserService} from "../../shared/services/user.service";
-import {User} from "../../shared/models";
+import {User} from "../../shared/models/user";
 
 @Component({
   selector: 'app-register',
