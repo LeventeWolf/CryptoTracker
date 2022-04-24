@@ -3,10 +3,10 @@
     <h1 class="page-title">Profile</h1>
     <hr style="width: 90%" />
       <img class="profile-picture" src="../../../assets/Wolf.jfif" alt="profile" />
-      <div class="email">{{user.email}}</div>
+      <div class="email">{{user?.email}}</div>
 
     <div class="id">
-      {{ user.uid | truncate:[14, '...'] }}
+      {{ user?.uid | truncate:[14, '...'] }}
     </div>
 
     <div class="trades-wrap">
@@ -14,20 +14,13 @@
       <div class="trades-text">Trades</div>
     </div>
 
-    <div class="trades-wrap">
-      <div class="trades-number">{{favouritesLength}}</div>
-      <div class="trades-text"> Fav Crypto</div>
-    </div>
+<!--    <div class="trades-wrap">-->
+<!--      <div class="trades-number">{{favouritesLength}}</div>-->
+<!--      <div class="trades-text"> Fav Crypto</div>-->
+<!--    </div>-->
 
-
-<!--    <button class="edit-wrap">-->
-<!--      <div>Edit</div>-->
-<!--      <mat-icon [inline]="true">mode_edit_outline</mat-icon>-->
-<!--    </button>-->
-
-    <!-- TODO: Get joined date -->
     <div class="joined-wrap">
-      Joined May,2021
+      Joined {{user?.joinedDate}}
     </div>
 
   </div>
