@@ -44,7 +44,6 @@
                (input)="updateCurrency()"/>
         <button mat-button class="action" (click)="increase('crypto')">+</button>
       </div>
-
       <small class="invalid-field" *ngIf="submitted && tradeForm.controls['crypto'].hasError('required')">
         Field is required!
       </small>

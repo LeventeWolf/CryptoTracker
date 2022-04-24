@@ -2,7 +2,7 @@ $coin-green: #2EBD85;
 $coin-red: #F6465D;
 
 .trade-wrap {
-  height: 80%;
+  height: 95%;
 
   padding: 1em;
   gap: 1em;
@@ -116,6 +116,8 @@ form {
     gap: 10px;
     align-self: center;
     $trade-color: #ffffff;
+    padding-top: 1em;
+    margin-bottom: 3em;
 
 
     .buy, .sell {

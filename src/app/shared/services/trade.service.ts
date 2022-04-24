@@ -27,7 +27,7 @@ export class TradeService {
 
   getAllByUserID(userID: string) {
     return this.afs.collection<Trade>(this.collectionName, ref => ref.where('userID', '==', userID)
-          .orderBy('date', 'asc'))
+          .orderBy('date', 'desc'))
           .valueChanges();
   }
 

@@ -21,7 +21,7 @@ export class TradeComponent implements OnInit, OnChanges {
   action: 'market' | 'limit' | 'date' = 'limit';
   submitted: boolean = false;
   loading: boolean = false;
-  snackbarDuration = 3;
+  snackbarDuration = 1.5;
 
   constructor(private route: ActivatedRoute, private tradeService: TradeService, private router: Router, private _snackBar: MatSnackBar) {
     this.initForm();
