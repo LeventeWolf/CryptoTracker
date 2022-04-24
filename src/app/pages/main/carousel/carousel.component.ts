@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {fetchCoins} from "../main.component";
 import {Coin} from "../../../shared/models/coinTable";
 import {Router} from "@angular/router";
+import {CoinService} from "../../../shared/services/coin.service";
 
 @Component({
   selector: 'app-carousel',
@@ -13,7 +13,7 @@ export class CarouselComponent implements OnInit {
   innerWidth = window.innerWidth;
   private readonly _number_of_coins: number;
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private coinService: CoinService) {
     if (innerWidth < 600) {
       this._number_of_coins = 3;
     } else {
@@ -22,12 +22,12 @@ export class CarouselComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    await fetchCoins('usd').then(coins => {
+    await this.coinService.fetchCoins('usd').then(coins => {
       this.random_coins = this.getNRandomCoins(coins, this._number_of_coins);
     });
 
     setInterval(async () => {
-      await fetchCoins('usd').then(coins => {
+      await this.coinService.fetchCoins('usd').then(coins => {
         this.random_coins = this.getNRandomCoins(coins, this._number_of_coins);
       });
     }, 8000);

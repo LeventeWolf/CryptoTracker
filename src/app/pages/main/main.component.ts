@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Axios from "axios";
-import {CoinList} from "../../../api/api";
 
 @Component({
   selector: 'app-main',
@@ -13,19 +11,4 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
-}
-
-export async function fetchCoins(currency: 'usd' | 'huf') {
-  let result: any = [];
-
-  await Axios.get(CoinList(currency))
-    .then(response => {
-      result = response.data;
-    })
-    .catch(response => {
-      console.log(`[CryptoTable] FetchCoins Error!`)
-      console.log(response)
-    })
-
-  return result;
 }

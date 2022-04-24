@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {fetchCoins} from '../../main/main.component';
 import {Router} from "@angular/router";
 import {Coin} from "../../../shared/models/coinTable";
+import {CoinService} from "../../../shared/services/coin.service";
 
 @Component({
   selector: 'app-crypto-table',
@@ -12,10 +12,11 @@ export class CryptoTableComponent implements OnInit {
   public coins: Coin[] = [];
   innerWidth = window.innerWidth;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private coinService: CoinService) {
+  }
 
   async ngOnInit(): Promise<void> {
-    await fetchCoins('usd').then(coins => {
+    await this.coinService.fetchCoins('usd').then(coins => {
       this.coins = coins.slice(0, 10);
     });
   }
@@ -36,7 +37,6 @@ export class CryptoTableComponent implements OnInit {
   numberWithCommas(num: number) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
 
   menuSwitch(coin: string) {
     this.router.navigateByUrl('crypto/' + coin)

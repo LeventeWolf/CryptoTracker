@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Coin, defaultCoin} from "../../shared/models/coin";
-import Axios from "axios";
-import {SingleCoin} from "../../../api/api";
 import {ActivatedRoute} from "@angular/router";
+import {CoinService} from "../../shared/services/coin.service";
 
 
 @Component({
@@ -13,20 +12,19 @@ import {ActivatedRoute} from "@angular/router";
 export class CryptoComponent implements OnInit {
   coin: Coin = defaultCoin;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private coinService: CoinService) {
   }
-
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
 
-    Axios.get(SingleCoin(id))
+    this.coinService.fetchCoin(id)
       .then(response => {
-        this.coin = response.data
+        this.coin = response.data;
       })
       .catch(error => {
-        console.error('[ERROR] Fetching single coin data')
-        console.log(error);
-      })
+        console.error(`[COIN-SERVICE] Error while fetching single coin:`);
+        console.error(error);
+      });
   }
 }
