@@ -27,8 +27,11 @@ main {
 
 .trade-wrap {
   margin-block: 1em;
-  border-bottom: 1px solid #3f3e3e;
   letter-spacing: 0.5px;
+
+  mat-divider {
+    background-color: #3f3e3e;
+  }
 
   .title-wrap, .action-wrap, .amount-wrap, .price-wrap {
     display: flex;
