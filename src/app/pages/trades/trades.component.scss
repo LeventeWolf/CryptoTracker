@@ -29,6 +29,18 @@ main {
   margin-block: 1em;
   letter-spacing: 0.5px;
 
+  .action-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .icon {
+    width: 1em;
+    cursor: pointer;
+  }
+
   mat-divider {
     background-color: #3f3e3e;
   }

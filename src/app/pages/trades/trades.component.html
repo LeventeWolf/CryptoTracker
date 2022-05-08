@@ -10,7 +10,10 @@
       <div class="trade-wrap" *ngFor="let trade of trades">
         <div class="title-wrap">
           <span class="name">{{trade.coinSymbol | uppercase}}/USD</span>
-          <span class="date">{{trade.date}}</span>
+          <div class="action-wrap">
+            <span class="date">{{trade.date}}</span>
+            <img class="icon" (click)="onDelete(trade.id)" src="https://cdn-icons-png.flaticon.com/512/401/401036.png" alt="X" />
+          </div>
         </div>
         <div class="action-wrap">
           <span class="action" [ngClass]="calculateClass(trade.type)">{{trade.action | titlecase}}/{{trade.type | titlecase}}</span>

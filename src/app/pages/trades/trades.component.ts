@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Trade} from "../../shared/models/trade";
 import {TradeService} from "../../shared/services/trade.service";
 import firebase from "firebase/compat/app";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {delay} from "../../app.component";
 
 @Component({
   selector: 'app-trades',
@@ -20,9 +22,7 @@ export class TradesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
-
 
   uid() {
     if (!firebase.auth().currentUser) {
@@ -40,4 +40,9 @@ export class TradesComponent implements OnInit {
   calculateClassStatus(type: "buy" | "sell") {
     return ['status-' + type];
   }
+
+  onDelete(id: string) {
+    this.tradesService.delete(id);
+  }
+
 }
