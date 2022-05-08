@@ -26,7 +26,8 @@ export class TradeService {
   }
 
   getAllByUserID(userID: string) {
-    return this.afs.collection<Trade>(this.collectionName, ref => ref.where('userID', '==', userID)
+    return this.afs.collection<Trade>(this.collectionName, ref =>
+      ref.where('userID', '==', userID)
           .orderBy('date', 'desc'))
           .valueChanges();
   }
@@ -44,7 +45,8 @@ export class TradeService {
   }
 
   getNumberOfTradesByUserID(userID: string) {
-    return this.afs.collection<Trade>(this.collectionName, ref => ref.where('userID', '==', userID))
+    return this.afs.collection<Trade>(this.collectionName, ref =>
+      ref.where('userID', '==', userID))
       .valueChanges();
   }
 }
