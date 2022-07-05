@@ -1,5 +1,5 @@
 # CryptoTracker
-CryptoTracker is a price-tracking website for cryptoassets.
+CryptoTracker is a price-tracking website for cryptoassets. | Angular
 
 
 ### Live demo
